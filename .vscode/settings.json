@@ -1,0 +1,36 @@
+{
+  "latex-workshop.latex.outDir": "%DIR%/build",
+  "latex-workshop.latex.recipe.default": "latexmk (project latexmkrc)",
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "latexmk (project latexmkrc)",
+      "tools": [
+        "latexmk"
+      ]
+    }
+  ],
+  "latex-workshop.latex.tools": [
+    {
+      "name": "latexmk",
+      "command": "latexmk",
+      "args": [
+        "-g",
+        "%DOC%"
+      ],
+      "env": {}
+    }
+  ],
+  "latex-workshop.view.pdf.viewer": "tab",
+  "latex-workshop.formatting.latex": "latexindent",
+  "latex-workshop.formatting.latexindent.path": "/opt/homebrew/bin/node",
+  "latex-workshop.formatting.latexindent.args": [
+    "/Users/tardi9rad3/hym-dev/DST_SP2025_20_Aj_Thanwadee/tools/latexindent-lite.js",
+    "-c",
+    "%DIR%/",
+    "%TMPFILE%",
+    "-y=defaultIndent: '%INDENT%'"
+  ],
+  "[latex]": {
+    "editor.defaultFormatter": "James-Yu.latex-workshop"
+  }
+}

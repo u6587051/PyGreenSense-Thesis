@@ -37,28 +37,28 @@
 \end{itemize}
 
 \begin{table}[H]
-\centering
-\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{3cm} >{\raggedright\arraybackslash}p{4cm} X}
-\toprule
-{\boldfont ประเภท Code Smell} & {\boldfont ผลการเปรียบเทียบ (Benchmarking)} & {\boldfont หมายเหตุ} \\
-\midrule
-Dead Code
-& ตรงกันกับเครื่องมือ Vulture
-& ตรวจพบฟังก์ชันและตัวแปรที่ไม่ได้ใช้งานได้อย่างแม่นยำ \\
-Long Method
-& ตรงกันกับ PyExamine และ smell-detector-python
-& มีการคำนวณจำนวนบรรทัดในฟังก์ชันที่สอดคล้องกัน \\
-God Class
-& ตรงกันกับ PyExamine
-& ตรวจจับคลาสที่มีขนาดใหญ่เกินไป ({\italicfont Large Class}) ได้อย่างถูกต้อง \\
-Duplicated Code
-& มีความแตกต่างในด้านขอบเขตการตรวจจับ
-& เครื่องมืออื่นมักตรวจแบบข้ามไฟล์ ({\italicfont Cross-file}) แต่ในเวอร์ชันปัจจุบันของ {\italicfont PyGreenSense} เน้นการตรวจภายในไฟล์เดียวกัน ({\italicfont Single-file}) \\
-Mutable Default Argument
-& ตรวจสอบด้วยตนเอง ({\italicfont Manual})
-& เนื่องจากไม่พบเครื่องมืออัตโนมัติที่รองรับกฎนี้ จึงใช้วิธีนับบรรทัดที่มีการประกาศ \texttt{list}/\texttt{dict} ในพารามิเตอร์ฟังก์ชัน \\
-\bottomrule
-\end{tabularx}
+    \centering
+    \begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{3cm} >{\raggedright\arraybackslash}p{4cm} X}
+        \toprule
+        {\boldfont ประเภท Code Smell} & {\boldfont ผลการเปรียบเทียบ (Benchmarking)} & {\boldfont หมายเหตุ} \\
+        \midrule
+        Dead Code
+        & ตรงกันกับเครื่องมือ Vulture
+        & ตรวจพบฟังก์ชันและตัวแปรที่ไม่ได้ใช้งานได้อย่างแม่นยำ \\
+        Long Method
+        & ตรงกันกับ PyExamine และ smell-detector-python
+        & มีการคำนวณจำนวนบรรทัดในฟังก์ชันที่สอดคล้องกัน \\
+        God Class
+        & ตรงกันกับ PyExamine
+        & ตรวจจับคลาสที่มีขนาดใหญ่เกินไป ({\italicfont Large Class}) ได้อย่างถูกต้อง \\
+        Duplicated Code
+        & มีความแตกต่างในด้านขอบเขตการตรวจจับ
+        & เครื่องมืออื่นมักตรวจแบบข้ามไฟล์ ({\italicfont Cross-file}) แต่ในเวอร์ชันปัจจุบันของ {\italicfont PyGreenSense} เน้นการตรวจภายในไฟล์เดียวกัน ({\italicfont Single-file}) \\
+        Mutable Default Argument
+        & ตรวจสอบด้วยตนเอง ({\italicfont Manual})
+        & เนื่องจากไม่พบเครื่องมืออัตโนมัติที่รองรับกฎนี้ จึงใช้วิธีนับบรรทัดที่มีการประกาศ \texttt{list}/\texttt{dict} ในพารามิเตอร์ฟังก์ชัน \\
+        \bottomrule
+    \end{tabularx}
 \captionsetup{justification=centering, name=ตาราง}
 \caption{ผลการเปรียบเทียบการตรวจจับ Code Smell}
 \label{tab:benchmark-smells}
@@ -69,13 +69,13 @@ Mutable Default Argument
 นอกจากผลในตาราง \ref{tab:benchmark-smells} แล้ว ผู้จัดทำยังรวบรวมตัวอย่างผลลัพธ์จากการรันจริงเพื่อเปรียบเทียบรูปแบบการรายงานของ {\italicfont PyGreenSense} กับเครื่องมืออ้างอิงในแต่ละกรณีศึกษา ดังรูป \ref{fig:ch5_deadcode_benchmark} ถึงรูป \ref{fig:ch5_godclass_benchmark}
 
 \begin{figure}[H]
-\centering
-\begin{subfigure}[t]{0.48\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{figures/chap5/benchmark_deadcode_pygreensense.png}
-    \captionsetup{name=รูป}
-    \caption{ผลจาก PyGreenSense}
-\end{subfigure}
+    \begin{subfigure}[t]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/chap5/benchmark_deadcode_pygreensense.png}
+        \captionsetup{name=รูป}
+        \caption{ผลจาก PyGreenSense}
+    \end{subfigure}
 \hfill
 \begin{subfigure}[t]{0.48\textwidth}
     \centering
@@ -89,13 +89,13 @@ Mutable Default Argument
 \end{figure}
 
 \begin{figure}[H]
-\centering
-\begin{subfigure}[t]{0.48\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{figures/chap5/benchmark_longmethod_pygreensense.png}
-    \captionsetup{name=รูป}
-    \caption{ผลจาก PyGreenSense}
-\end{subfigure}
+    \begin{subfigure}[t]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/chap5/benchmark_longmethod_pygreensense.png}
+        \captionsetup{name=รูป}
+        \caption{ผลจาก PyGreenSense}
+    \end{subfigure}
 \hfill
 \begin{subfigure}[t]{0.48\textwidth}
     \centering
@@ -109,13 +109,13 @@ Mutable Default Argument
 \end{figure}
 
 \begin{figure}[H]
-\centering
-\begin{subfigure}[t]{0.76\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{figures/chap5/benchmark_godclass_pygreensense.png}
-    \captionsetup{name=รูป}
-    \caption{ผลจาก PyGreenSense}
-\end{subfigure}
+    \begin{subfigure}[t]{0.76\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/chap5/benchmark_godclass_pygreensense.png}
+        \captionsetup{name=รูป}
+        \caption{ผลจาก PyGreenSense}
+    \end{subfigure}
 \hfill
 \begin{subfigure}[t]{0.18\textwidth}
     \centering
@@ -170,23 +170,23 @@ Mutable Default Argument
 ตาราง \ref{tab:evaluation-result-metrics} แสดงผลลัพธ์เชิงปริมาณจากชุดโค้ดทดสอบ โดยค่าที่แสดงในรูปแบบ ``ก่อน/หลัง'' หมายถึงค่าก่อนการ refactor และหลังการ refactor ตามลำดับ
 
 \begin{table}[H]
-\centering
-\scriptsize
-\renewcommand{\arraystretch}{1.15}
-\setlength{\tabcolsep}{3pt}
-\begin{tabularx}{\textwidth}{|P{2.1cm}|P{2.2cm}|P{2.5cm}|P{2.5cm}|P{2.5cm}|X|}
-\hline
-{\boldfont ขนาดชุดทดสอบ} & {\boldfont CFP ก่อน/หลัง} & {\boldfont Emissions ก่อน/หลัง (kg CO$_2$)} & {\boldfont Energy ก่อน/หลัง (kWh)} & {\boldfont LOC ก่อน/หลัง} & {\boldfont การตีความผลลัพธ์} \\
-\hline
-Micro (ประมาณ 500 LOC) & 167 / 55 & 2.52e-07 / 2.21e-07 & 4.59e-07 / 4.02e-07 & 722 / 346 & Code Smell, CFP, emissions และ energy ลดลงหลังการ refactor \\
-\hline
-Small (ประมาณ 2{,}500 LOC) & 548 / 30 & 9.60e-06 / 7.18e-07 & 1.75e-05 / 1.31e-06 & 6{,}260 / 548 & ผลลัพธ์หลัง refactor ดีขึ้นชัดเจนทั้งด้านโครงสร้างและค่าคาร์บอน \\
-\hline
-Medium (ประมาณ 5{,}000 LOC) & 1010.5 / 134.5 & 1.18e-06 / 1.25e-06 & 2.24e-06 / 2.28e-06 & 8{,}640.4 / 1{,}011.6 & Code Smell และ CFP ลดลง แต่ emissions และ energy เพิ่มขึ้นเล็กน้อย \\
-\hline
-Large (ประมาณ 10K LOC) & 1489 / 1000.7 & 4.42e-06 / 4.50e-06 & 4.33e-06 / 4.43e-06 & 21{,}258 / 14{,}174.0 & โค้ดหลัง refactor มีขนาดลดลง แต่ค่าคาร์บอนและพลังงานสูงขึ้นเล็กน้อย และมีข้อจำกัดด้านจำนวนรอบการทดสอบ \\
-\hline
-\end{tabularx}
+    \centering
+    \scriptsize
+    \renewcommand{\arraystretch}{1.15}
+    \setlength{\tabcolsep}{3pt}
+    \begin{tabularx}{\textwidth}{|P{2.1cm}|P{2.2cm}|P{2.5cm}|P{2.5cm}|P{2.5cm}|X|}
+        \hline
+        {\boldfont ขนาดชุดทดสอบ} & {\boldfont CFP ก่อน/หลัง} & {\boldfont Emissions ก่อน/หลัง (kg CO$_2$)} & {\boldfont Energy ก่อน/หลัง (kWh)} & {\boldfont LOC ก่อน/หลัง} & {\boldfont การตีความผลลัพธ์} \\
+        \hline
+        Micro (ประมาณ 500 LOC) & 167 / 55 & 2.52e-07 / 2.21e-07 & 4.59e-07 / 4.02e-07 & 722 / 346 & Code Smell, CFP, emissions และ energy ลดลงหลังการ refactor \\
+        \hline
+        Small (ประมาณ 2{,}500 LOC) & 548 / 30 & 9.60e-06 / 7.18e-07 & 1.75e-05 / 1.31e-06 & 6{,}260 / 548 & ผลลัพธ์หลัง refactor ดีขึ้นชัดเจนทั้งด้านโครงสร้างและค่าคาร์บอน \\
+        \hline
+        Medium (ประมาณ 5{,}000 LOC) & 1010.5 / 134.5 & 1.18e-06 / 1.25e-06 & 2.24e-06 / 2.28e-06 & 8{,}640.4 / 1{,}011.6 & Code Smell และ CFP ลดลง แต่ emissions และ energy เพิ่มขึ้นเล็กน้อย \\
+        \hline
+        Large (ประมาณ 10K LOC) & 1489 / 1000.7 & 4.42e-06 / 4.50e-06 & 4.33e-06 / 4.43e-06 & 21{,}258 / 14{,}174.0 & โค้ดหลัง refactor มีขนาดลดลง แต่ค่าคาร์บอนและพลังงานสูงขึ้นเล็กน้อย และมีข้อจำกัดด้านจำนวนรอบการทดสอบ \\
+        \hline
+    \end{tabularx}
 \captionsetup{justification=centering, name=ตาราง}
 \caption{ผลลัพธ์เชิงปริมาณก่อนและหลังการ refactor จากชุดโค้ดทดสอบ}
 \label{tab:evaluation-result-metrics}
@@ -197,23 +197,23 @@ Large (ประมาณ 10K LOC) & 1489 / 1000.7 & 4.42e-06 / 4.50e-06 & 4.33e
 ตาราง \ref{tab:evaluation-smell-counts} แสดงจำนวน Code Smell ที่ตรวจพบในแต่ละขนาดของโปรเจกต์ โดยตัวเลขในแต่ละช่องแสดงผลในรูปแบบ ``ก่อน/หลัง'' เช่นเดียวกับตารางก่อนหน้า
 
 \begin{table}[H]
-\centering
-\scriptsize
-\renewcommand{\arraystretch}{1.15}
-\setlength{\tabcolsep}{3pt}
-\begin{tabularx}{\textwidth}{|P{2.0cm}|P{2.0cm}|P{2.4cm}|P{2.2cm}|P{2.0cm}|X|}
-\hline
-{\boldfont ขนาดชุดทดสอบ} & {\boldfont God Class} & {\boldfont Duplicated Code} & {\boldfont Long Method} & {\boldfont Dead Code} & {\boldfont Mutable Default Arguments} \\
-\hline
-Micro & 1 / 1 & 5 / 1 & 2 / 2 & 9 / 0 & 6 / 0 \\
-\hline
-Small & 1 / 0 & 7 / 1 & 5 / 1 & 109 / 0 & 14 / 0 \\
-\hline
-Medium & 0.9 / 0.1 & 7.2 / 0.8 & 3.7 / 1.3 & 88.2 / 9.8 & 97.2 / 10.8 \\
-\hline
-Large & 1 / 0.67 & 14 / 10 & 7 / 4.67 & 118 / 78.67 & 142 / 94.67 \\
-\hline
-\end{tabularx}
+    \centering
+    \scriptsize
+    \renewcommand{\arraystretch}{1.15}
+    \setlength{\tabcolsep}{3pt}
+    \begin{tabularx}{\textwidth}{|P{2.0cm}|P{2.0cm}|P{2.4cm}|P{2.2cm}|P{2.0cm}|X|}
+        \hline
+        {\boldfont ขนาดชุดทดสอบ} & {\boldfont God Class} & {\boldfont Duplicated Code} & {\boldfont Long Method} & {\boldfont Dead Code} & {\boldfont Mutable Default Arguments} \\
+        \hline
+        Micro & 1 / 1 & 5 / 1 & 2 / 2 & 9 / 0 & 6 / 0 \\
+        \hline
+        Small & 1 / 0 & 7 / 1 & 5 / 1 & 109 / 0 & 14 / 0 \\
+        \hline
+        Medium & 0.9 / 0.1 & 7.2 / 0.8 & 3.7 / 1.3 & 88.2 / 9.8 & 97.2 / 10.8 \\
+        \hline
+        Large & 1 / 0.67 & 14 / 10 & 7 / 4.67 & 118 / 78.67 & 142 / 94.67 \\
+        \hline
+    \end{tabularx}
 \captionsetup{justification=centering, name=ตาราง}
 \caption{จำนวน Code Smell ที่ตรวจพบก่อนและหลังการ refactor ในแต่ละขนาดของโปรเจกต์}
 \label{tab:evaluation-smell-counts}
@@ -226,13 +226,13 @@ Large & 1 / 0.67 & 14 / 10 & 7 / 4.67 & 118 / 78.67 & 142 / 94.67 \\
 เพื่อให้เห็นผลของการปรับปรุงโค้ดในระดับกรณีศึกษา รูป \ref{fig:ch5_godclass_refactor} และรูป \ref{fig:ch5_duplicate_refactor} แสดงตัวอย่างผลก่อนและหลังการ refactor ของปัญหา {\italicfont God Class} และ {\italicfont Duplicated Code} ตามลำดับ ซึ่งช่วยยืนยันว่าระบบสามารถใช้ติดตามผลการลด Code Smell ได้จริงในระดับไฟล์ทดสอบ
 
 \begin{figure}[H]
-\centering
-\begin{subfigure}[t]{0.48\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{figures/chap5/godclass_before_refactor.jpg}
-    \captionsetup{name=รูป}
-    \caption{ก่อนการ refactor}
-\end{subfigure}
+    \begin{subfigure}[t]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/chap5/godclass_before_refactor.jpg}
+        \captionsetup{name=รูป}
+        \caption{ก่อนการ refactor}
+    \end{subfigure}
 \hfill
 \begin{subfigure}[t]{0.48\textwidth}
     \centering
@@ -246,13 +246,13 @@ Large & 1 / 0.67 & 14 / 10 & 7 / 4.67 & 118 / 78.67 & 142 / 94.67 \\
 \end{figure}
 
 \begin{figure}[H]
-\centering
-\begin{subfigure}[t]{0.48\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{figures/chap5/duplicated_before_refactor.jpg}
-    \captionsetup{name=รูป}
-    \caption{ก่อนการ refactor}
-\end{subfigure}
+    \begin{subfigure}[t]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/chap5/duplicated_before_refactor.jpg}
+        \captionsetup{name=รูป}
+        \caption{ก่อนการ refactor}
+    \end{subfigure}
 \hfill
 \begin{subfigure}[t]{0.48\textwidth}
     \centering
@@ -266,6 +266,8 @@ Large & 1 / 0.67 & 14 / 10 & 7 / 4.67 & 118 / 78.67 & 142 / 94.67 \\
 \end{figure}
 
 จากตัวอย่างดังกล่าวจะเห็นว่าหลังการ refactor จำนวนปัญหาที่ระบบตรวจพบลดลงอย่างชัดเจน และข้อความแสดงผลมีความตรงไปตรงมามากขึ้นต่อผู้ใช้ ช่วยให้การติดตามผลก่อนและหลังการแก้ไขสามารถทำได้ทั้งในเชิงคุณภาพและเชิงปริมาณ
+
+% -----------------------------------------------------
 
 \section{การประเมินผลส่วนขยาย VS Code}
 
@@ -293,35 +295,35 @@ Large & 1 / 0.67 & 14 / 10 & 7 / 4.67 & 118 / 78.67 & 142 / 94.67 \\
 รูป \ref{fig:ch5_webview_analysis} ถึงรูป \ref{fig:ch5_webview_output} แสดงหน้าจอการทำงานจริงของ {\italicfont Webview Dashboard} โดยครอบคลุมทั้งแท็บ Analysis, Issues, History และ Output ตามลำดับ ซึ่งช่วยยืนยันว่าระบบสามารถรวมข้อมูลสรุป การแสดงปัญหารายบรรทัด ประวัติการรัน และผลจาก program output ไว้ในพื้นที่รายงานเดียวได้อย่างครบถ้วน
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=\textwidth]{figures/chap5/webview_analysis_tab.png}
-\captionsetup{name=รูป}
-\caption{หน้าจอแท็บ Analysis ของ Webview Dashboard}
-\label{fig:ch5_webview_analysis}
+    \centering
+    \includegraphics[width=\textwidth]{figures/chap5/webview_analysis_tab.png}
+    \captionsetup{name=รูป}
+    \caption{หน้าจอแท็บ Analysis ของ Webview Dashboard}
+    \label{fig:ch5_webview_analysis}
 \end{figure}
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=\textwidth]{figures/chap5/webview_issues_tab.png}
-\captionsetup{name=รูป}
-\caption{หน้าจอแท็บ Issues ของ Webview Dashboard}
-\label{fig:ch5_webview_issues}
+    \centering
+    \includegraphics[width=\textwidth]{figures/chap5/webview_issues_tab.png}
+    \captionsetup{name=รูป}
+    \caption{หน้าจอแท็บ Issues ของ Webview Dashboard}
+    \label{fig:ch5_webview_issues}
 \end{figure}
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=\textwidth]{figures/chap5/webview_history_tab.png}
-\captionsetup{name=รูป}
-\caption{หน้าจอแท็บ History ของ Webview Dashboard}
-\label{fig:ch5_webview_history}
+    \centering
+    \includegraphics[width=\textwidth]{figures/chap5/webview_history_tab.png}
+    \captionsetup{name=รูป}
+    \caption{หน้าจอแท็บ History ของ Webview Dashboard}
+    \label{fig:ch5_webview_history}
 \end{figure}
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=\textwidth]{figures/chap5/webview_output_tab.png}
-\captionsetup{name=รูป}
-\caption{หน้าจอแท็บ Output ของ Webview Dashboard}
-\label{fig:ch5_webview_output}
+    \centering
+    \includegraphics[width=\textwidth]{figures/chap5/webview_output_tab.png}
+    \captionsetup{name=รูป}
+    \caption{หน้าจอแท็บ Output ของ Webview Dashboard}
+    \label{fig:ch5_webview_output}
 \end{figure}
 
 \subsection{การประเมินผลมาตรวัดด้านพลังงานและคาร์บอน}

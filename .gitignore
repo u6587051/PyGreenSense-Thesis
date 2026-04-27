@@ -62,7 +62,9 @@ _minted*/
 archive/faculty-template/**/.DS_Store
 
 # Editor / IDE local settings
-.vscode/
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
 .idea/
 
 # Temporary backup files

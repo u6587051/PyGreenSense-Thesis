@@ -68,52 +68,52 @@
 {\boldfont GSF Impact Framework} เป็นกรอบแนวคิดจาก {\italicfont Green Software Foundation} ที่เน้นการรายงานผลกระทบด้านคาร์บอนของซอฟต์แวร์ในรูปแบบที่เป็นระบบ โดยไม่ได้มุ่งเน้นเฉพาะการตรวจจับ {\italicfont code smell} แต่ให้ความสำคัญกับการเก็บข้อมูลและประเมิน {\italicfont software carbon intensity} ในเชิงมาตรฐาน กรอบแนวคิดนี้มีประโยชน์ต่อการสร้างภาพรวมของผลกระทบด้านสิ่งแวดล้อมในระดับระบบ และช่วยสนับสนุนแนวทางการพัฒนาซอฟต์แวร์ที่สามารถตรวจสอบและเปรียบเทียบผลลัพธ์ได้อย่างเป็นระบบ
 
 \begin{table}[H]
-\centering
-\renewcommand{\arraystretch}{1.3}
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{|l|c|c|c|c|c|c|c|c|}
-\hline
-{\boldfont Tools} &
-{\boldfont Green Code Smell} &
-{\boldfont Feedback Report} &
-{\boldfont Carbon Tracking} &
-{\boldfont Energy Tracking} &
-{\boldfont Runtime Result} &
-{\boldfont Languages} &
-{\boldfont Development} &
-{\boldfont Level} \\
-\hline
-CAST Highlight
-& \checkmark & \checkmark & \checkmark & \checkmark & \xmark & 10+ Languages & PC & Static \\
-\hline
-aDoctor
-& \checkmark & \checkmark & \xmark & \xmark & \xmark & Java (Android) & Mobile & Static \\
-\hline
-ecoCode (SonarQube plugin)
-& \checkmark & \checkmark & \xmark & \xmark & \xmark & Multi-language & PC / Server & Static \\
-\hline
-SonarQube
-& \xmark & \checkmark & \xmark & \xmark & \xmark & Multi-language & PC / Server & Static \\
-\hline
-PySmell
-& \xmark & \checkmark & \xmark & \xmark & \xmark & Python & PC & Static \\
-\hline
-Pylint
-& \xmark & \checkmark & \xmark & \xmark & \xmark & Python & PC & Static \\
-\hline
-Ruff
-& \xmark & \checkmark & \xmark & \xmark & \xmark & Python & PC & Static \\
-\hline
-Green Metrics Tool
-& \xmark & \checkmark & \checkmark & \checkmark & \checkmark & General & PC / Server & Dynamic \\
-\hline
-CodeCarbon
-& \xmark & \checkmark & \checkmark & \checkmark & \checkmark & Python & PC & Dynamic \\
-\hline
-GSF Impact Framework
-& \xmark & \checkmark & \checkmark & \checkmark & \checkmark & General & PC / Cloud & Framework \\
-\hline
-\end{tabular}
+    \centering
+    \renewcommand{\arraystretch}{1.3}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{|l|c|c|c|c|c|c|c|c|}
+        \hline
+        {\boldfont Tools} &
+        {\boldfont Green Code Smell} &
+        {\boldfont Feedback Report} &
+        {\boldfont Carbon Tracking} &
+        {\boldfont Energy Tracking} &
+        {\boldfont Runtime Result} &
+        {\boldfont Languages} &
+        {\boldfont Development} &
+        {\boldfont Level} \\
+        \hline
+        CAST Highlight
+        & \checkmark & \checkmark & \checkmark & \checkmark & \xmark & 10+ Languages & PC & Static \\
+        \hline
+        aDoctor
+        & \checkmark & \checkmark & \xmark & \xmark & \xmark & Java (Android) & Mobile & Static \\
+        \hline
+        ecoCode (SonarQube plugin)
+        & \checkmark & \checkmark & \xmark & \xmark & \xmark & Multi-language & PC / Server & Static \\
+        \hline
+        SonarQube
+        & \xmark & \checkmark & \xmark & \xmark & \xmark & Multi-language & PC / Server & Static \\
+        \hline
+        PySmell
+        & \xmark & \checkmark & \xmark & \xmark & \xmark & Python & PC & Static \\
+        \hline
+        Pylint
+        & \xmark & \checkmark & \xmark & \xmark & \xmark & Python & PC & Static \\
+        \hline
+        Ruff
+        & \xmark & \checkmark & \xmark & \xmark & \xmark & Python & PC & Static \\
+        \hline
+        Green Metrics Tool
+        & \xmark & \checkmark & \checkmark & \checkmark & \checkmark & General & PC / Server & Dynamic \\
+        \hline
+        CodeCarbon
+        & \xmark & \checkmark & \checkmark & \checkmark & \checkmark & Python & PC & Dynamic \\
+        \hline
+        GSF Impact Framework
+        & \xmark & \checkmark & \checkmark & \checkmark & \checkmark & General & PC / Cloud & Framework \\
+        \hline
+    \end{tabular}
 }
 \captionsetup{justification=centering, name=ตาราง}
 \caption{ตารางสรุปการเปรียบเทียบเครื่องมือที่เกี่ยวข้องในระบบนิเวศของงานวิจัย}
@@ -131,28 +131,28 @@ GSF Impact Framework
 \end{itemize}
 
 \begin{table}[H]
-\centering
-\begin{adjustbox}{max width=\textwidth}
-\renewcommand{\arraystretch}{1.3}
-\setlength{\tabcolsep}{6pt}
-\begin{tabular}{|p{3.5cm}|p{3.5cm}|p{3cm}|p{3cm}|p{2cm}|}
-\hline
-{\boldfont Tools} & {\boldfont Code Smell Type} & {\boldfont Output Type} & {\boldfont Language} & {\boldfont Level}
-\\
-\hline
-PyExamine & Code Smells & Log & Python & Static
-\\
-\hline
-Smell-detector-python & Code Smells & Log & Python & Static
-\\
-\hline
-Vulture & Dead Code & Log & Python & Static
-\\
-\hline
-PyGreenSense & Green Code Smells & Visual Report (Extension) & Python & Hybrid
-\\
-\hline
-\end{tabular}
+    \centering
+    \begin{adjustbox}{max width=\textwidth}
+        \renewcommand{\arraystretch}{1.3}
+        \setlength{\tabcolsep}{6pt}
+        \begin{tabular}{|p{3.5cm}|p{3.5cm}|p{3cm}|p{3cm}|p{2cm}|}
+            \hline
+            {\boldfont Tools} & {\boldfont Code Smell Type} & {\boldfont Output Type} & {\boldfont Language} & {\boldfont Level}
+            \\
+            \hline
+            PyExamine & Code Smells & Log & Python & Static
+            \\
+            \hline
+            Smell-detector-python & Code Smells & Log & Python & Static
+            \\
+            \hline
+            Vulture & Dead Code & Log & Python & Static
+            \\
+            \hline
+            PyGreenSense & Green Code Smells & Visual Report (Extension) & Python & Hybrid
+            \\
+            \hline
+        \end{tabular}
 \end{adjustbox}
 \captionsetup{justification=centering, name=ตาราง}
 \caption{ตารางเปรียบเทียบเครื่องมือวิเคราะห์โค้ด Python ที่ใช้ในงานวิจัย}
