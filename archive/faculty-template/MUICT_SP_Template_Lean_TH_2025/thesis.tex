@@ -1,0 +1,225 @@
+%TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+% Original Doc by Dr. Karin Sumongkayothin
+% Last updated by Dr. Jidapa Kraisangka
+%============ Logs ===========================
+% % May 2, 2019 -- Dr. Karin Sumongkayothin
+% [+] Figure caption centering was fixed
+% [+] thesisGradyear variable was added 
+% [+] Landscape style was added 
+%---------------------------------------------
+% June 1, 2019 -- Dr. Karin Sumongkayothin
+% [+] Listing cation was set to aligned left 
+% [+] Remove using /raggedright in table captions 
+% [+] Correct the spaces between  Name and Lastname 
+% [+] Add title to student name in abstract page
+%---------------------------------------------
+% Aug 1, 2020 -- Dr. Jidapa Kraisangka
+% [+] Fixed space between title and name for long first name
+% [+] Clean some texts and provide example LaTex
+%---------------------------------------------
+% Sep 15, 2021 -- Dr. Jidapa Kraisangka
+% [-] Remove DoB and Place of Birth from Biographies
+%---------------------------------------------
+%=============================================
+
+\documentclass[16pt, a4paper]{book}
+\usepackage{lipsum}		%To generate sample text
+\usepackage{ifthen}
+\usepackage{graphicx}
+
+\usepackage{fontspec}
+\usepackage{xunicode}
+\usepackage{xltxtra}
+
+%====== Add the packages here ================
+\usepackage{enumitem}
+\usepackage{listings}	%For showing programming language in Latex
+\usepackage{caption}
+\usepackage{subcaption}
+\captionsetup{compatibility=false}
+\usepackage{amssymb}
+\usepackage{pifont}
+\usepackage{amsmath}
+\usepackage[hidelinks]{hyperref}
+\usepackage[section]{placeins}
+\usepackage{booktabs}
+
+\usepackage{textcomp}
+\usepackage{multirow}
+\usepackage{float}
+\usepackage{lipsum}
+\usepackage{lscape}
+%\usepackage{pdflscape}https://www.overleaf.com/project/5dc7fb1fd24fcd000117ca19
+
+%update Mar 31 2023
+\usepackage{adjustbox}
+%=============================================
+
+\usepackage{muictthesis}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Set listing options 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\lstset{
+	columns=fullflexible,
+	float=h,
+	frame=single,
+	basicstyle=\fontsize{10}{10}\selectfont\ttfamily,
+	breaklines=true,
+	postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
+	belowcaptionskip=8pt
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Set path directory of figures 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Include more path to figures here
+\graphicspath{{./figures/chap1/}{./figures/chap2/}{./figures/chap3/}}
+
+\XeTeXlinebreaklocale "th"	%Set word wrapping for Thai language
+\XeTeXlinebreakskip = 0pt plus 1.1pt   % 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Thesis Meta Data (edit each field)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Thesis Title 
+\newcommand{\thesisTitle}{Your Senior Project Title in English}
+\newcommand{\thesisTitleTH}{ชื่อโครงงาน}
+
+%Thesis Keywords
+\newcommand{\thesisKeywords}
+{Keyword1 \slash Keyword2 \slash Keyword3}
+
+%Author name
+%\newcommand{\thesisFirstTitleName}{Miss.} 
+%\newcommand{\thesisFirstAuthorName}{XXXXXX}
+%\newcommand{\thesisFirstAuthorLastName}{XXXXXX}
+\newcommand{\thesisFirstTitleNameTH}{นางสาว}
+\newcommand{\thesisFirstAuthorNameTH}{xxxxx}
+\newcommand{\thesisFirstAuthorLastNameTH}{xxxxx}
+\newcommand{\thesisFirstAuthorID}{xx87xxx}
+\newcommand{\thesisFirstAuthorBP}{Bangkok, Thailand}
+\newcommand{\thesisFirstAuthorHC}{High School, Year}
+
+%\newcommand{\thesisSecondTitleName}{MR.}		%Comment all if you don't have second author
+%\newcommand{\thesisSecondAuthorName}{XXXXXX}
+%\newcommand{\thesisSecondAuthorLastName}{XXXXXX}
+\newcommand{\thesisSecondTitleNameTH}{นาย}
+\newcommand{\thesisSecondAuthorNameTH}{xxxxx}
+\newcommand{\thesisSecondAuthorLastNameTH}{xxxxx}
+\newcommand{\thesisSecondAuthorID}{xx87xxx}
+\newcommand{\thesisSecondAuthorBP}{XXXXXX, Thailand}
+\newcommand{\thesisSecondAuthorHC}{High School , Year}
+
+%\newcommand{\thesisThirdTitleName}{Mr.}			%Comment all if you don't have third author
+%\newcommand{\thesisThirdAuthorName}{XXXXXXX}
+%\newcommand{\thesisThirdAuthorLastName}{XXXXXX}
+
+\newcommand{\thesisThirdTitleNameTH}{นาย}
+\newcommand{\thesisThirdAuthorNameTH}{xxxxx}
+\newcommand{\thesisThirdAuthorLastNameTH}{xxxxx}
+\newcommand{\thesisThirdAuthorID}{xx87xxx}
+\newcommand{\thesisThirdAuthorBP}{XXXXXX, Thailand}
+\newcommand{\thesisThirdAuthorHC}{High School , Year}
+
+\newcommand{\thesisAuthorsInitials}{I1. Lastname1, I2.  Lastname2, I3. Lastname3} %Initials of Thesis Authors
+
+%Degree that this thesis is for
+\newcommand{\thesisDegree}{วิทยาศาสตรบัณฑิต}
+\newcommand{\thesissubDegree}{สาขาวิทยาการและเทคโนโลยีดิจิทัล}
+
+%Month, year and date of thesis publication
+\newcommand{\thesisAcademicYear}{20XX} %Academic Year
+\newcommand{\thesisGradYear}{20XX} %Graduated Year
+
+%Department
+%\newcommand{\thesisDep}{Faculty of Information and Communication Technology}
+\newcommand{\thesisDep}{คณะเทคโนโลยีสารสนเทศและการสื่อสาร}
+
+%University
+%\newcommand{\thesisUni}{Mahidol University}
+\newcommand{\thesisUni}{มหาวิทยาลัยมหิดล}
+
+%Advisor name
+\newcommand{\thesisAdv}{Dr. XXXXXX XXXXXXX}		    %with title name
+\newcommand{\thesisAdvTH}{ดร.xxxxx xxxxx}  		%with title name
+
+%Co-advisor name
+\def\thesisCoadv{Dr. XXXXXX XXXXXXX}	%with title name; comment if you don't have co-advisor
+\def\thesisCoadvTH{ดร.xxxxx xxxxx}	
+%===========================================================
+% Copyright
+%\documentclass{article}
+%\usepackage[printwatermark]{xwatermark}
+%\usepackage{xcolor}
+%\usepackage{graphicx}
+%\usepackage{lipsum}
+
+
+% \newwatermark*[allpages,color=red!50,angle=45,scale=3,xpos=0,ypos=0]{Copyright of Mahidol University}
+
+\begin{document}
+\renewcommand{\thelstlisting}{\thechapter.\arabic{lstlisting}} %Change listing numbering style
+\makeatletter
+\makeatother
+\newpage
+\coverpage
+\input{acknowledgement.tex}
+\input{abstract.tex}
+\newpage
+
+% \pagenumbering{gobble} % Remove page number from bottom
+%update 30 Mar 2023
+\fancyhead[r]{\thepage}
+\fancyfoot{}
+
+\tableofcontents
+\newpage
+
+
+
+%\lstlistoflistings
+\addtocontents{toc}{\vspace*{0.7\baselineskip}}%
+
+\mainmatter		%Reset and set page number to arabic style
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\fancyhead[L]{\ifthenelse{\isodd{\value{page}}}{คณะ ICT มหาวิทยาลัยมหิดล}{}} %odd page header
+\fancyhead[R]{\ifthenelse{\isodd{\value{page}}}{ว.ทบ. (DST)~/~\thepage}{\leftmark~/~\thepage}} %even page header
+
+
+\input{chap1} 
+\clearpage
+
+%\input{chap2}
+%\clearpage
+
+\input{chap3}
+\clearpage
+
+\input{chap4}
+\clearpage
+
+\input{chap5}
+\clearpage
+
+\input{chap6}
+\clearpage
+
+
+\bibliographystyle{muict.bst}
+\bibliography{reference}
+\clearpage
+\input{AIstatement}
+\clearpage
+\input{appendixA}
+\clearpage
+\input{appendixB}
+\clearpage
+
+\end{document}

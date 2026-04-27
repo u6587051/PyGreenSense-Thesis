@@ -1,0 +1,77 @@
+.
+├── DST SP2025_20_Aj_Thanwadee.tex
+├── README.md
+├── SP-LaTex_Structure.txt
+├── appendices
+│   ├── appendixA.tex
+│   ├── appendixB.tex
+│   ├── appendixC.tex
+│   └── appendixD.tex
+├── archive
+│   ├── drafts
+│   │   └── chapTEST.tex
+│   └── faculty-template
+│       ├── MUICT_SP_Template_Lean_TH_2025
+│       ├── MUICT_SP_Template_Lean_TH_2025.zip
+│       └── README.md
+├── bibliography
+│   └── reference.bib
+├── build
+│   ├── thesis.aux
+│   ├── thesis.bbl
+│   ├── thesis.blg
+│   ├── thesis.fdb_latexmk
+│   ├── thesis.fls
+│   ├── thesis.lof
+│   ├── thesis.log
+│   ├── thesis.out
+│   ├── thesis.pdf
+│   ├── thesis.synctex.gz
+│   ├── thesis.toc
+│   └── thesis.xdv
+├── chapters
+│   ├── chap1.tex
+│   ├── chap2.tex
+│   ├── chap3.tex
+│   ├── chap4.tex
+│   ├── chap5.tex
+│   └── chap6.tex
+├── figures
+│   ├── chap2
+│   │   ├── IMG_1050.JPG
+│   │   └── Sample101.PNG
+│   ├── chap4
+│   │   ├── Overall_SystemArchitecture.png
+│   │   ├── Process_Library.jpg
+│   │   └── Process_VisualCodeExtension.jpg
+│   └── chap5
+│       ├── benchmark_deadcode_pygreensense.png
+│       ├── benchmark_deadcode_vulture.png
+│       ├── benchmark_godclass_pyexamine.png
+│       ├── benchmark_godclass_pygreensense.png
+│       ├── benchmark_longmethod_pygreensense.png
+│       ├── benchmark_longmethod_smell_detector.png
+│       ├── duplicated_after_refactor.jpg
+│       ├── duplicated_before_refactor.jpg
+│       ├── godclass_after_refactor.jpg
+│       ├── godclass_before_refactor.jpg
+│       ├── webview_analysis_tab.png
+│       ├── webview_history_tab.png
+│       ├── webview_issues_tab.png
+│       └── webview_output_tab.png
+├── font
+│   ├── ANGSA.ttf
+│   ├── THSarabunNew Bold.ttf
+│   ├── THSarabunNew BoldItalic.ttf
+│   ├── THSarabunNew Italic.ttf
+│   └── THSarabunNew.ttf
+├── frontmatter
+│   ├── AIstatement.tex
+│   ├── abstract.tex
+│   └── acknowledgement.tex
+├── latexmkrc
+└── styles
+    ├── muict.bst
+    └── muictthesis.sty
+
+14 directories, 57 files

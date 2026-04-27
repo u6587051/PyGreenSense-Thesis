@@ -1,0 +1,72 @@
+# =========================================================
+# Project: LaTeX Thesis / Senior Project
+# Purpose: Ignore generated LaTeX build files and local system files
+# =========================================================
+
+# OS/system files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# LaTeX build output folders
+build/
+out/
+
+# LaTeX temporary and auxiliary files
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.brf
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.run.xml
+*.synctex
+*.synctex.gz
+*.synctex.gz(busy)
+*.toc
+*.lof
+*.lot
+*.xdv
+*.dvi
+*.ps
+*.nav
+*.snm
+*.vrb
+*.ilg
+*.idx
+*.ind
+*.ist
+*.acn
+*.acr
+*.alg
+*.glg
+*.glo
+*.gls
+*.glsdefs
+*.upa
+*.upb
+*-blx.bib
+
+# LaTeX packages that generate cache folders
+_minted*/
+*.pyg
+
+# Keep the archived faculty template visible in GitHub for reference,
+# even when it contains files that look like generated LaTeX outputs.
+!archive/faculty-template/
+!archive/faculty-template/**
+archive/faculty-template/**/.DS_Store
+
+# Editor / IDE local settings
+.vscode/
+.idea/
+
+# Temporary backup files
+*.bak
+*.tmp
+*.swp
+*~

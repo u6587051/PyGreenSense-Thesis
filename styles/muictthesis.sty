@@ -1,0 +1,771 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%
+% MUICT Thesis Style
+%
+% Normally there is no need to edit this file. It should be called, using
+% \usepackage{muictthesis.sty}, from thesis.tex.  
+%
+% Version: 1.2
+% Author: Karin Sumongkayothin 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+
+\NeedsTeXFormat{LaTeX2e}[1998/12/01]
+\ProvidesPackage{styles/muictthesis}[2014/05/12 v0.1 MU Bachelor Thesis Style]
+
+% Required packages
+\RequirePackage{indentfirst}
+\RequirePackage{fontspec}
+\RequirePackage{xunicode}
+\RequirePackage{xltxtra}
+\RequirePackage{polyglossia}
+\RequirePackage{setspace}
+\RequirePackage {fancybox}
+\RequirePackage{fancyhdr}
+%\RequirePackage{showframe}
+\RequirePackage{lastpage}
+
+
+% For automatic switching between languages
+\RequirePackage[Latin,Thai]{ucharclasses}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%English thesis
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setmainlanguage{english}
+\setotherlanguages{thai}
+
+
+% Set environment for Thai fonts
+\newenvironment{thailang}{\thaifont}{}
+
+% Create a compatibility to the old fontspec version  
+\ifx\undefinded\setfontfamily
+	\let\setfontfamily\newfontfamily
+\fi
+
+% Use hyperref's \url so URL fragments such as #section compile correctly.
+
+
+% Mahidol uses Times New Roman(12pt) for English and Angsana New(16pt) for Thai  
+\defaultfontfeatures{Path=font/}
+\setmainfont[Ligatures=TeX, SizeFeatures={Size=14}]{THSarabunNew.ttf}
+% I've installed an ANGSANA NEW Font with a TTF instead dont know if it will help, just did it to clear the errors 
+\newfontfamily{\thaifont}[Script=Thai, SizeFeatures={Size=16}]{THSarabunNew.ttf}
+\newfontfamily{\header}[Script=Thai, SizeFeatures={Size=20}]{THSarabunNew Bold.ttf}
+% \newfontfamily{\header}[SizeFeatures={Size=10}]{THSarabunNew.ttf}
+% When using Thai characters use thailang environment then switch back to the original environment
+% \setTransitionsFor{Thai}{\begin{thailang}}{\end{thailang}}
+
+%Font size
+\setfontfamily{\Huge}[SizeFeatures={Size=22}]{THSarabunNew.ttf}
+\setfontfamily{\huge}[SizeFeatures={Size=22}]{THSarabunNew.ttf}
+\setfontfamily{\LARGE}[SizeFeatures={Size=20}]{THSarabunNew.ttf}
+\setfontfamily{\Large}[SizeFeatures={Size=20}]{THSarabunNew.ttf}
+\setfontfamily{\large}[SizeFeatures={Size=20}]{THSarabunNew Bold.ttf}
+\setfontfamily{\normalsize}[SizeFeatures={Size=14}]{THSarabunNew.ttf}
+\setfontfamily{\normalsizebold}[SizeFeatures={Size=14}]{THSarabunNew Bold.ttf}
+\setfontfamily{\normalsizeitalic}[SizeFeatures={Size=14}]{THSarabunNew Italic.ttf}
+\setfontfamily{\smallsize}[SizeFeatures={Size=14}]{THSarabunNew.ttf}
+\setfontfamily{\footnotesize}[SizeFeatures={Size=10}]{THSarabunNew.ttf}
+\setfontfamily{\scriptsize}[SizeFeatures={Size=8}]{THSarabunNew.ttf}
+\setfontfamily{\tiny}[SizeFeatures={Size=6}]{THSarabunNew.ttf}
+
+\newcommand{\boldfont}[1]{\normalsizebold\selectfont #1}
+\newcommand{\italicfont}[1]{\normalsizeitalic\selectfont #1}
+\newcommand{\titlefont}[1]{\large\selectfont #1}
+\newcommand{\titlefontTH}[1]{\large\selectfont #1} 
+%=============================================
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Global Page layout
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setlength{\parindent}{1.27cm}	% 1.27cm indent
+\renewcommand{\baselinestretch}{1.75}
+
+\setlength{\hoffset}{-0.5in}		%h mark = 1inch 
+\setlength{\voffset}{0in}		%v mark = 1inch
+%
+\setlength{\oddsidemargin}{1cm}  % 3.75cm left margin
+\setlength{\evensidemargin}{1cm} % 3.75cm left margin (even pages)
+\setlength{\marginparsep}{0.2cm}
+%\setlength{\marginparwidth}{0in}
+%
+%
+\setlength{\topmargin}{-0.04cm}       % 2.5cm header margin
+\setlength{\headsep}{0.75cm}        % 3.75cm top margin
+%
+%\setlength{\footskip}{-2.5cm}
+\setlength{\textwidth}{16.75cm}        
+%\setlength{\textheight}{24.45cm}
+\setlength{\textheight}{23.45cm}  % new change
+\raggedbottom
+
+
+%test header style
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}	% Remove header horizontal line
+%===========================================================
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Cover Page layout
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newcommand{\coverpage}{
+\frontmatter
+\thispagestyle{empty}
+\begin{center}
+	\vspace*{1\baselineskip}
+	\titlefont{
+	\titlefontTH{\thesisTitleTH}\\
+		\begin{spacing}{1}
+			\titlefont{
+				\vfill
+				โดย\\
+				\vspace*{1.25\baselineskip}
+				\makeatletter% Start TeX commands
+				\begin{tabular}{l@{\hspace{14pt}}lll}
+					{\thesisFirstTitleNameTH~}&{\thesisFirstAuthorNameTH}&{\thesisFirstAuthorLastNameTH}&\thesisFirstAuthorID  \vspace{3pt} \\
+                    {\thesisFirstTitleNameTH~}&{\thesisSecondAuthorNameTH}&{\thesisSecondAuthorLastNameTH}&\thesisSecondAuthorID  \vspace{3pt} \\
+                    {\thesisFirstTitleNameTH~}&{\thesisThirdAuthorNameTH}&{\thesisThirdAuthorLastNameTH}&\thesisThirdAuthorID  \vspace{3pt} \\
+                    \vspace*{2.0\baselineskip}
+					
+					%\ifx\undefinded\thesisSecondAuthorNameTH\expandafter\@firstoftwo \else \expandafter\@secondoftwo \fi {} {{\thesisSecondTitleNameTH~}&{\thesisSecondAuthorNameTH}&{\thesisSecondAuthorLastNameTH}&\thesisSecondAuthorID \vspace{3pt} \\ }
+			        %\ifx\undefinded\thesisThirdAuthorNameTH\expandafter\@firstoftwo \else \expandafter\@secondoftwo \fi {} {{\thesisThirdTitleNameTH~}&{                                                     \thesisThirdAuthorNameTH}&{\thesisThirdAuthorLastNameTH}&\thesisThirdAuthorID\\ }
+					\end{tabular}
+				%\makeatother % End TeX commands
+					%\vspace*{2.0\baselineskip}
+					%\MakeUppercase{อาจารย์ที่ปรึกษา}\\
+                        %\vspace{5pt}
+					%\thesisAdvTH\\
+						\ifx\thesisCoadv\undefined
+							{}
+						\else
+							\vspace*{\baselineskip}
+							อาจารย์ที่ปรึกษาร่วม\\
+                                \vspace{5pt}
+							\thesisCoadvTH\\
+						\fi
+                \vfill
+				อาจารย์ที่ปรึกษา\\
+                \vspace*{1.25\baselineskip}
+                \thesisAdvTH\\
+				\vfill
+                    \vspace*{\baselineskip}
+                    โครงงานนี้เป็นส่วนหนึ่งของการศึกษาตามหลักสูตร\\
+				\vspace*{\baselineskip}
+		      \thesisDegree \\
+                \vspace{3pt}
+				(\thesissubDegree)\\
+				\vspace*{\baselineskip}
+				\thesisDep\\
+                \vspace{3pt}
+				\thesisUni\\
+                \vspace{3pt}
+				\thesisAcademicYear\\
+                    %update 30 Mar 2023
+                    \vspace*{2.5\baselineskip}
+                    ลิขสิทธิ์ของมหาวิทยาลัยมหิดล
+				\vspace*{\baselineskip}
+			}
+		\end{spacing}
+	}
+\end{center}
+\clearpage
+}
+%===========================================================
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Acknowledgement layout
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newenvironment{acknowledgement}
+{
+%\thispagestyle{empty}
+\addtocontents{toc}{\protect\renewcommand{\protect\@dotsep}{400}}
+
+\phantomsection\addcontentsline{toc}{chapter}{กิตติกรรมประกาศ}
+
+\addtocontents{toc}{\protect\renewcommand{\protect\@dotsep}{0.5}}
+
+\begin{center}
+\titlefont{กิตติกรรมประกาศ}
+\end{center}%
+\normalsize\par
+}
+{%
+\par
+\vspace{\baselineskip}
+\hfill\thesisFirstTitleNameTH~\thesisFirstAuthorNameTH~\thesisFirstAuthorLastNameTH\par
+
+\ifx\undefinded\thesisSecondAuthorNameTH\else{\hfill\thesisSecondTitleNameTH~\thesisSecondAuthorNameTH~\thesisSecondAuthorLastNameTH{}\par}\fi
+\ifx\undefinded\thesisThirdAuthorNameTH{}\else{\hfill\thesisThirdTitleNameTH~\thesisThirdAuthorNameTH~\thesisThirdAuthorLastNameTH\par}\fi
+\fancyfoot{}
+\clearpage
+}
+
+%===========================================================
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%AI Usage Acknowledgement layout
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newenvironment{aiack}
+{
+\fancyhead[L]{\ifthenelse{\isodd{\value{page}}}{คณะ ICT มหาวิทยาลัยมหิดล}{}} %odd page header
+\fancyhead[R]{\ifthenelse{\isodd{\value{page}}}{ว.ทบ (DST)~/~\thepage}{ข้อความเปิดเผยการใช้ AI~/~\thepage}} %even page header
+%\thispagestyle{empty}
+\addtocontents{toc}{\protect\renewcommand{\protect\@dotsep}{400}}
+
+\phantomsection\addcontentsline{toc}{chapter}{ข้อความเปิดเผยการใช้เทคโนโลยีปัญญาประดิษฐ์}
+
+\addtocontents{toc}{\protect\renewcommand{\protect\@dotsep}{0.5}}
+
+\begin{center}
+        \vspace*{17\p@}%
+	\titlefont{\MakeUppercase{ข้อความเปิดเผยการใช้เทคโนโลยีปัญญาประดิษฐ์}}
+        \vskip 30\p@
+\end{center}%
+\par
+}
+{%
+\par
+\vspace{\baselineskip}
+\hfill\thesisFirstTitleNameTH~\thesisFirstAuthorNameTH~\thesisFirstAuthorLastNameTH\par
+
+\ifx\undefinded\thesisSecondAuthorNameTH\else{\hfill\thesisSecondTitleNameTH~\thesisSecondAuthorNameTH~\thesisSecondAuthorLastNameTH{}\par}\fi
+\ifx\undefinded\thesisThirdAuthorNameTH{}\else{\hfill\thesisThirdTitleNameTH~\thesisThirdAuthorNameTH~\thesisThirdAuthorLastNameTH\par}\fi
+\fancyfoot{}
+\clearpage
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Thai Abstract layout
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newenvironment{abstractTH}{%
+    \addtocontents{toc}{\protect\renewcommand{\protect\@dotsep}{400}}
+	\phantomsection\addcontentsline{toc}{chapter}{บทคัดย่อ}
+	\addtocontents{toc}{\protect\renewcommand{\protect\@dotsep}{0.5}}
+ 
+	\fancyhead[L]{\smallsize คณะ ICT มหาวิทยาลัยมหิดล}
+	\fancyhead[R]{\smallsize โครงงานวิจัยระดับปริญญาตรี / \thepage}
+	\fancyfoot{}
+	\fancyput(-0.4cm,-25cm){%
+		\setlength{\unitlength}{1cm}%
+		\framebox(17.15,24){}%
+	}
+	\noindent
+        \normalsize
+	\thesisTitleTH
+	\vspace*{\baselineskip}\\
+	\makeatletter% Start TeX commands
+	\begin{tabular}{@{}l@{\hspace{4pt}}l@{\hspace{24pt}}l}
+			\thesisFirstTitleNameTH~\thesisFirstAuthorNameTH& \thesisFirstAuthorLastNameTH &\thesisFirstAuthorID~ITDS/B\\ 
+	\ifx\undefinded\thesisSecondAuthorNameTH\expandafter\@firstoftwo \else \expandafter\@secondoftwo \fi {} {\thesisSecondTitleNameTH~\thesisSecondAuthorNameTH &\thesisSecondAuthorLastNameTH &\thesisSecondAuthorID~ITDS/B\\ }
+	\ifx\undefinded\thesisThirdAuthorNameTH\expandafter\@firstoftwo \else \expandafter\@secondoftwo \fi {} {\thesisThirdTitleNameTH~\thesisThirdAuthorNameTH&\thesisThirdAuthorLastNameTH &\thesisThirdAuthorID~ITDS/B\\ }
+	\end{tabular}
+	\makeatother% End TeX commands
+	\vspace*{0.5\baselineskip}\\
+	วท.บ. (วิทยาการและเทคโนโลยีดิจิทัล)
+	\vspace*{0.67\baselineskip}\\
+	อาจารย์ที่ปรึกษาโครงงาน: \thesisAdvTH
+	\newline
+	อาจารย์ที่ปรึกษาร่วมโครงงาน: \thesisCoadvTH
+        \par
+	\begin{center}
+        \normalsizebold บทคัดย่อ
+        
+	\end{center}%
+	%\smallsize\par
+	%\vspace{-0.05\baselineskip}
+}
+{	
+	\par
+    \vfill
+	\noindent
+    %\parbox{\textwidth}{\pageref{LastPage}~หน้า}
+    คำสำคัญ:~\thesisKeywords\\ 
+    \pageref{LastPage}~หน้า \\
+	\clearpage
+}
+
+%===========================================================
+
+\makeatletter% Start TeX commands
+
+\let\@afterindentfalse\@afterindenttrue
+\@afterindenttrue
+
+
+
+\renewcommand*{\@Alph}[1]{%
+  \ifcase#1\or ก\or ข\or ค\or ง\or
+    จ\or ฉ\or ช\or ด\or ต\or ถ\or ท\or
+    น\or บ\or ป\or ผ\or ฝ\or พ\or ฟ\or ม\or\v ย\or
+    ร\or ว\or ส\or อ\or ฮ\else\@ctrerr\fi
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%			Appendices layout
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcounter{appendix}		%create \c@appendix, theappendix
+\renewcommand \theappendix{\@Alph\c@appendix}
+ 
+\renewcommand{\appendix}[1]{%
+	\setcounter{figure}{0}
+	\setcounter{table}{0}
+	\setcounter{lstlisting}{0}
+	\clearpage
+	\setcounter{section}{\z@}
+	\renewcommand \thefigure {\theappendix.\@arabic\c@figure}	% change dot to some other symbols for changing to caption style 
+        \fancyhead[L]{\ifthenelse{\isodd{\value{page}}}{คณะ ICT มหาวิทยาลัยมหิดล}{}} %odd page header
+        \fancyhead[R]{\ifthenelse{\isodd{\value{page}}}{ว.ทบ. (DST)~/~\thepage}{ภาคผนวก~/~\thepage}}
+	\renewcommand \thetable {\theappendix.\@arabic\c@table}
+	\renewcommand \thesection {\theappendix.\@arabic\c@section}
+	\renewcommand \thelstlisting {\theappendix.\@arabic\c@lstlisting}
+	\refstepcounter{appendix}	
+	\addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
+	\addtocontents{toc}{\protect\renewcommand{\protect\@dotsep}{400}}
+	\addcontentsline{toc}{chapter}{ภาคผนวก\space\theappendix}
+	\chaptermark{Appendix\space\theappendix}%	Appendix's header
+%	\addtocontents{toc}{\protect\renewcommand{\protect\@dotsep}{0.5}}
+	\begin{center}
+  		\vspace*{17\p@}%
+		\titlefontTH{ภาคผนวก}~\theappendix\par
+		\titlefontTH{\MakeUppercase{#1}}\par
+  	\vskip 30\p@
+	\end{center}%
+	\par
+}%
+%===========================================================
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%					Biography Layout	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\biotable}[1]{%
+	\begin{tabular}{@{}p{.42\textwidth}p{.52\textwidth}}
+		\bfseries NAME					&\csname thesis#1TitleName\endcsname\space\csname thesis#1AuthorName\endcsname\space\csname thesis#1AuthorLastName\endcsname\\
+		%\bfseries DATE OF BIRTH			&\csname thesis#1AuthorBD\endcsname\\
+		%\bfseries PLACE OF BIRTH		&\csname thesis#1AuthorBP\endcsname\\
+		\bfseries INSTITUTIONS ATTENDED	&\csname thesis#1AuthorHC\endcsname:\par \hspace{1.2cm}High School Diploma \par Mahidol University, \thesisGradYear:\par\hspace{1.2cm}Bachelor of Science (ICT)\\
+	\end{tabular}
+	\vskip 15\p@
+}
+
+\newcommand{\biography}{%
+\fancyhead[L]{\ifthenelse{\isodd{\value{page}}}{Faculty of ICT, Mahidol Univ.}{}} %odd page header
+\fancyhead[R]{\ifthenelse{\isodd{\value{page}}}{B.Sc. (ICT)~/~\thepage}{\leftmark~/~\thepage}} %even page header
+	\addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
+	\addtocontents{toc}{\protect\renewcommand{\protect\@dotsep}{400}}
+	\addcontentsline{toc}{chapter}{BIOGRAPHIES}
+	\chaptermark{Biographies}%	Biography's header
+	\begin{center}
+  		\vspace*{17\p@}%
+		\titlefont{\MakeUppercase{Biographies}}\par
+    	\vskip 30\p@
+			\biotable{First}
+			\ifx\thesisSecondAuthorName\undefined
+				{}
+			\else
+				\biotable{Second}
+			\fi
+			\ifx\thesisThirdAuthorName\undefined
+				{}
+			\else
+				\biotable{Third}
+			\fi
+	\end{center}%
+	\par
+}%
+%===========================================================
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%					Reference Layout	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%===========================================================
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Table of Content, List of Figure, List of Table layout
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand{\@dotsep}{0.5}	%Width between dots
+\setcounter{tocdepth}{2}% TOC includes three depth (1., 1.1, 1.1.1)
+
+
+%\newif\if@nodotsline	%declare boolean @istest with default value is false 
+%\@nodotslinetrue		% => set @nodotsline to be true
+
+\renewcommand\thefigure{\thechapter.\arabic{figure}} %Change figure numbering style
+\renewcommand\thetable{\thechapter.\arabic{table}}	%Change table numbering style
+%---------------------------------------------------
+%			 ToC page layout
+%---------------------------------------------------
+\renewcommand\tableofcontents{%		
+	%====== Add fancyhdr script to .toc file ==========
+	\addtocontents{toc}{\protect\thispagestyle{fancy}}
+	\addtocontents{toc}{\protect\fancyhead[L]{}}
+	\addtocontents{toc}{\protect\fancyhead[R]{\protect \thepage}}
+	%====== Add fancyhdr script to .toc file (End) ==========
+	\chapter*{สารบัญ}
+	\vskip -22\p@  
+	\hfill หน้า
+	\vskip 22\p@
+	\@starttoc{toc}%
+}
+
+\newcommand{\nocolonnumberline}[1]{\texorpdfstring{\hb@xt@\@tempdima}{\space}{#1~\texorpdfstring{\hfil}{\space}}} 	%normal numberline 
+\renewcommand{\numberline}[1]{\texorpdfstring{\hb@xt@\@tempdima}{\space}{#1:~\texorpdfstring{\hfil}{\space}}}			%numberline wittout colon 
+
+%---------------------------------------------------
+%	 	TOC Chapter list and Chapter layout format	
+%---------------------------------------------------
+\renewcommand\chapter{%
+	\secdef\@chapter\@schapter
+}
+
+\def\@chapter[#1]#2{%
+	\ifnum \c@secnumdepth >\m@ne
+		\if@mainmatter
+			\refstepcounter{chapter}%
+			\addcontentsline{toc}{chapter}%
+			{\protect\nocolonnumberline{\bfseries\thechapter}\bfseries\texorpdfstring{\MakeUppercase{#1}}{}}%
+		\else
+			\addcontentsline{toc}{chapter}{#1}%
+		\fi
+	\else
+		\addcontentsline{toc}{chapter}{#1}%
+	\fi
+	\chaptermark{#1}%	Chapter's header
+%	\addtocontents{lof}{\protect\addvspace{10\p@}}%		Remove the comments if extra space between chapters is required
+%	\addtocontents{lot}{\protect\addvspace{10\p@}}%
+	\if@twocolumn
+		\@topnewpage[\@makechapterhead{#2}]%
+	\else
+		\@makechapterhead{#2}%
+		\@afterheading
+	\fi}
+
+%\def bold dotted line for chapter in TOC
+\def\@chapdottedtocline#1#2#3#4#5{%
+	\ifnum #1>\c@tocdepth \else
+    	\vskip \z@ \@plus.2\p@
+    	{\leftskip #2\relax \rightskip \@tocrmarg \parfillskip -\rightskip
+     	\parindent #2\relax\@afterindenttrue
+     	\interlinepenalty\@M
+     	\leavevmode
+     	\@tempdima #3\relax
+     	\advance\leftskip \@tempdima \null\nobreak\hskip -\leftskip
+     	{#4}\nobreak
+     	\leaders\hbox{$\m@th
+        	\mkern \@dotsep mu\hbox{\bfseries .}\mkern \@dotsep
+        	mu$}\hfill
+     	\nobreak
+     	\hb@xt@\@pnumwidth{\hfil\normalfont \normalcolor #5}%
+     	\par}%
+  	\fi}
+
+\renewcommand*\l@chapter[2]{%
+	    \addpenalty{-\@highpenalty}%
+		\setlength{\@tempdima}{1.7em}
+	    \begingroup
+	       \parindent \z@ \rightskip \@pnumwidth
+	       \parfillskip -\@pnumwidth
+	       \leavevmode
+	       \hskip -\leftskip
+		   #1\nobreak\hfil\nobreak
+     	   \leaders\hbox{$\m@th
+           \mkern \@dotsep mu\hbox{.}\mkern \@dotsep
+           mu$}\hfill
+		   \hb@xt@\@pnumwidth{\hss #2}\par
+	       \penalty\@highpenalty
+	    \endgroup
+}
+
+%---------------------------------------------------
+%	 	TOC Section list and Section layout format	
+%---------------------------------------------------
+\renewcommand\section{\@afterindentfalse \secdef\@section\@ssection}
+
+\def\@makesectionhead#1{ \vspace{16pt} { \par\parindent \z@ %\centering
+	\normalsizebold\baselineskip 12pt \thesection\hskip 0.7em #1\par
+    \nobreak \vskip 8pt} }
+
+\def\@makessectionhead#1{ \vspace{16pt} { \par\parindent \z@ %\centering
+    \normalsizebold\baselineskip 12pt #1\par
+    \nobreak \vskip 8pt} }
+
+
+\def\@section[#1]#2{\ifnum \c@secnumdepth >\m@ne
+	\refstepcounter{section}
+  	\addcontentsline{toc}{section}{\protect
+	\nocolonnumberline{\thesection}\texorpdfstring{\MakeUppercase{#1}}{}}\else
+	\addcontentsline{toc}{section}{\texorpdfstring{\MakeUppercase{#1}}{}}\fi
+    \sectionmark{#1}
+    \if@twocolumn\@topnewpage[\@makesectionhead{#2}]
+	\else \@makesectionhead{#2}\@afterheading \fi
+	}
+
+\def\@ssection#1{\if@twocolumn \@topnewpage[\@makessectionhead{#1}]
+    \else \@makessectionhead{#1}\@afterheading\fi}
+
+%---------------------------------------------------
+% 	TOC Subsection list and Subsection layout format	
+%---------------------------------------------------
+\renewcommand\subsection{\@afterindentfalse \secdef\@subsection\@ssubsection}
+
+\def\@makesubsectionhead#1{ \vspace{16pt} { \par\parindent 5.5ex 
+	\normalsizebold\baselineskip 12pt \thesubsection\hskip 0.7em #1\par
+    \nobreak \vskip 8pt} }
+
+\def\@makessubsectionhead#1{ \vspace{16pt} { \par\parindent 5.5ex
+	\normalsizebold\ #1\par
+    \nobreak \vskip 8pt} }
+
+\def\@subsection[#1]#2{\ifnum \c@secnumdepth >\m@ne
+	\refstepcounter{subsection}
+  	\addcontentsline{toc}{subsection}{\protect
+	\nocolonnumberline{\thesubsection}\texorpdfstring{\MakeUppercase{#1}}{}}\else
+	\addcontentsline{toc}{subsection}{\texorpdfstring{\MakeUppercase{#1}}{}}\fi
+ 	\if@twocolumn\@topnewpage[\@makesubsectionhead{#2}]
+  	\else \@makesubsectionhead{#2}\@afterheading \fi}
+
+\def\@ssubsection#1{\if@twocolumn \@topnewpage[\@makessubsectionhead{#1}]
+	\else \@makessubsectionhead{#1}\@afterheading\fi}
+
+%---------------------------------------------------
+%	TOC Subsubsection list and Subsubsection layout format	
+%---------------------------------------------------
+
+%\renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}{-13pt plus
+%	-1pt minus -.5pt}{1sp}{\normalsize\it}}
+%
+%\def\@makesubsubsectionhead#1{ \vsecspace{12pt} { \parindent 0pt \raggedright
+%	\normalsize\rm \thesubsubsection.\hskip 0.7em \it #1\par
+%	\nobreak \vskip 1sp} }
+%
+%\def\@makessubsubsectionhead#1{ \vsecspace{12pt} { \parindent 0pt \raggedright
+%	\normalsize\it #1\par
+%    \nobreak \vskip 1sp} }
+%
+%\def\subsubsection{\@afterindentfalse \secdef\@subsubsection\@ssubsubsection}
+%
+%\def\@subsubsection[#1]#2{\ifnum \c@secnumdepth >\m@ne
+%	\refstepcounter{subsubsection}
+%	\addcontentsline{toc}{subsubsection}{\protect
+%	\numberline{\thesubsubsection}#1}\else
+%    \addcontentsline{toc}{subsubsection}{#1}\fi
+%    \if@twocolumn\@topnewpage[\@makesubsubsectionhead{#2}]
+%    \else \@makesubsubsectionhead{#2}\@afterheading \fi}
+%
+%\def\@ssubsubsection#1{\if@twocolumn \@topnewpage[\@makessubsubsectionhead{#1}]
+%	\else \@makessubsubsectionhead{#1}\@afterheading\fi}
+
+
+\renewcommand{\subsubsection}[1]{\@startsection{subsubsection}{3}{\z@}%
+	{-1.5ex \@plus -1ex \@minus -.2ex}%
+    {0.8ex \@plus.2ex}%
+	{\bfseries\leftskip \parindent}[\texorpdfstring{\MakeUppercase{#1}}{}]{\bfseries#1}}
+
+
+
+\renewcommand*\l@section{\@dottedtocline{1}{3em}{1cm}}
+\renewcommand*\l@subsection{\@dottedtocline{2}{5.4em}{1.3cm}}
+
+%---------------------------------------------------
+%	 	 LoF page layout	
+%---------------------------------------------------
+\renewcommand\listoffigures{%
+%	\addtocontents{lof}{\protect\thispagestyle{fancy}}
+%	\addtocontents{lof}{\protect\fancyhead[L]{}}
+%	\addtocontents{lof}{\protect\fancyhead[R]{\protect\thepage}}
+	\addtocontents{lof}{\protect\renewcommand{\protect\@dotsep}{0.5}}
+	\addtocontents{toc}{\protect\renewcommand{\protect\@dotsep}{400}}
+	\phantomsection\addcontentsline{toc}{chapter}{LIST OF FIGURES}
+	\addtocontents{toc}{\protect\renewcommand{\protect\@dotsep}{0.5}}
+	\chapter*{LIST OF FIGURES}
+	\vskip -22\p@  
+	\hfill Page
+	\vskip 22\p@
+	\@starttoc{lof}%
+}
+
+\renewcommand*\l@figure[2]{%
+	    \addpenalty{-\@highpenalty}%
+		\setlength{\@tempdima}{2.5em}
+	    \begingroup
+	       \parindent \z@ \rightskip \@pnumwidth
+	       \parfillskip -\@pnumwidth
+	       \leavevmode
+	       \advance\leftskip 5.4em% NEW: comment out if no indentation required for lines 2,3,...
+	       \hskip -\leftskip
+		   \figurename~#1\nobreak\hfil\nobreak
+     	   \leaders\hbox{$\m@th
+           \mkern \@dotsep mu\hbox{.}\mkern \@dotsep
+           mu$}\hfill
+		   \hb@xt@\@pnumwidth{\hss #2}\par
+	       \penalty\@highpenalty
+	    \endgroup
+}
+
+%---------------------------------------------------
+%	 	 LoT page layout	
+%---------------------------------------------------
+\renewcommand\listoftables{%
+%	\addtocontents{lot}{\protect\thispagestyle{fancy}}
+%	\addtocontents{lot}{\protect\fancyhead[L]{}}
+%	\addtocontents{lot}{\protect\fancyhead[R]{\protect\thepage}}
+	\addtocontents{toc}{\protect\renewcommand{\protect\@dotsep}{400}}
+	\phantomsection\addcontentsline{toc}{chapter}{LIST OF TABLES}
+	\addtocontents{toc}{\protect\renewcommand{\protect\@dotsep}{0.5}}
+	\chapter*{LIST OF TABLES}
+	\vskip -22\p@  
+	\hfill Page
+	\vskip 22\p@
+	\@starttoc{lot}%
+}
+
+\renewcommand*\l@table[2]{%
+	    \addpenalty{-\@highpenalty}%
+		\setlength{\@tempdima}{2.5em}
+	    \begingroup
+	       \parindent \z@ \rightskip \@pnumwidth
+	       \parfillskip -\@pnumwidth
+	       \leavevmode
+	       \advance\leftskip 5.4em% NEW: comment out if no indentation required for lines 2,3,...
+	       \hskip -\leftskip
+		   \tablename~#1\nobreak\hfil\nobreak
+     	   \leaders\hbox{$\m@th
+           \mkern \@dotsep mu\hbox{.}\mkern \@dotsep
+           mu$}\hfill
+		   \hb@xt@\@pnumwidth{\hss #2}\par
+	       \penalty\@highpenalty
+	    \endgroup
+}
+
+
+%---------------------------------------------------
+%	 	 LoL page layout	
+%---------------------------------------------------
+\renewcommand\lstlistoflistings{%
+%	\addtocontents{lol}{\protect\thispagestyle{fancy}}
+%	\addtocontents{lol}{\protect\fancyhead[L]{}}
+%	\addtocontents{lol}{\protect\fancyhead[R]{\protect\thepage}}
+	\addtocontents{toc}{\protect\renewcommand{\protect\@dotsep}{400}}
+	\phantomsection\addcontentsline{toc}{chapter}{LIST OF LISTINGS}
+	\addtocontents{toc}{\protect\renewcommand{\protect\@dotsep}{0.5}}
+	\chapter*{LIST OF LISTINGS}
+	\vskip -22\p@  
+	\hfill Page
+	\vskip 22\p@
+	\@starttoc{lol}%
+}
+
+\renewcommand*\l@lstlisting[2]{%
+	    \addpenalty{-\@highpenalty}%
+		\setlength{\@tempdima}{2.5em}
+	    \begingroup
+	       \parindent \z@ \rightskip \@pnumwidth
+	       \parfillskip -\@pnumwidth
+	       \leavevmode
+	       \advance\leftskip 5.4em% NEW: comment out if no indentation required for lines 2,3,...
+	       \hskip -\leftskip
+		   \lstlistingname~#1\nobreak\hfil\nobreak
+     	   \leaders\hbox{$\m@th
+           \mkern \@dotsep mu\hbox{.}\mkern \@dotsep
+           mu$}\hfill
+		   \hb@xt@\@pnumwidth{\hss #2}\par
+	       \penalty\@highpenalty
+	    \endgroup
+}
+
+%---------------------------------------------------
+%	Modified \caption to write lof and lot with ":" 
+%---------------------------------------------------
+\long\def\@caption#1[#2]#3{%
+	\par
+    \addcontentsline{\csname ext@#1\endcsname}{#1}%
+%	{\protect\numberline{\csname the#1\endcsname:{}\relax}{\ignorespaces #2}}%	change caption format in ToC
+	{\protect\numberline{\csname the#1\endcsname\relax}{\ignorespaces #2}}%
+	\begingroup
+	\@parboxrestore
+    \if@minipage
+	    \@setminipage
+    \fi
+    \normalsize
+    \@makecaption{\csname fnum@#1\endcsname}{\ignorespaces #3}\par
+\endgroup}
+
+
+%---------------------------------------------------
+% Change font size of chapter* headings
+%---------------------------------------------------
+\def\@makeschapterhead#1{%
+  {\parindent \z@ \centering
+    \interlinepenalty\@M
+	\bfseries \texorpdfstring{\MakeUppercase{\titlefontTH{#1}}}{}\par\nobreak
+  \vskip 40\p@
+  }
+}
+
+%---------------------------------------------------
+% Change font size of chapter headings
+%---------------------------------------------------
+\def\@makechapterhead#1{%
+  \vspace*{17\p@}%
+  {\parindent \z@ \centering \normalfont
+    \ifnum \c@secnumdepth >\m@ne
+      \if@mainmatter
+			  %\bfseries{\titlefontTH{บทที่\space \thechapter}}\par\nobreak
+                \bfseries{\titlefontTH{บทที่\space}\thechapter}\par\nobreak
+      \else
+			  \bfseries{\titlefontTH{บทที่\space \thechapter}}\par\nobreak
+      \fi
+    \fi
+    \interlinepenalty\@M
+	\bfseries \texorpdfstring{\MakeUppercase{\titlefont{#1}}}{}\par\nobreak
+    \vskip 30\p@
+  }
+}
+
+%---------------------------------------------------
+%	Patching \bibliography command 
+%---------------------------------------------------
+\let\oldbibliography\bibliography
+\renewcommand{\bibliography}[1]{%
+\fancyhead[L]{\ifthenelse{\isodd{\value{page}}}{คณะ ICT มหาวิทยาลัยมหิดล}{}} %odd page header
+\fancyhead[R]{\ifthenelse{\isodd{\value{page}}}{ว.ทบ. (DST)~/~\thepage}{เอกสารอ้างอิง~/~\thepage}} %even page header
+\addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
+\addtocontents{toc}{\protect\renewcommand{\protect\@dotsep}{400}}
+\addcontentsline{toc}{chapter}{เอกสารอ้างอิง}
+\vspace*{18pt}
+\renewcommand\bibname{เอกสารอ้างอิง}
+\oldbibliography{#1}
+}
+
+%---------------------------------------------------
+% Change section headings style
+%---------------------------------------------------
+%\renewcommand{\section}[1]{\@startsection{section}{1}{\z@}%
+%    {-1.5ex \@plus -1ex \@minus -.2ex}%
+%    {0.8ex \@plus.2ex}%
+%	{\bfseries}[\texorpdfstring{\MakeUppercase{#1}}{}]{\bfseries#1}}
+
+%\renewcommand{\subsection}[1]{\@startsection{subsection}{2}{\z@}%
+%	{-1.5ex \@plus -1ex \@minus -.2ex}%
+%    {0.8ex \@plus.2ex}%
+%	{\bfseries\leftskip 5.5ex}[\texorpdfstring{\MakeUppercase{#1}}{}]{\bfseries#1}}
+
+% End TeX Commands
+
+
+%---------------------------------------------------
+% Setting caption alignment 
+%---------------------------------------------------
+\captionsetup[figure]{justification=centering}
+\captionsetup[table]{position=top,skip=6pt,justification=raggedright,singlelinecheck=off}
+\DeclareCaptionFormat{listing} {
+	\hspace{-0.2cm}\parbox{\textwidth}{#1#2#3}}
+\captionsetup[lstlisting]{format=listing}
+%================================================
+
+\makeatother

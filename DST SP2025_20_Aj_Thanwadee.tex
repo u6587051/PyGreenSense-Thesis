@@ -1,0 +1,238 @@
+%TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+% Original Doc by Dr. Karin Sumongkayothin
+% Last updated by Dr. Jidapa Kraisangka
+%============ Logs ===========================
+% % May 2, 2019 -- Dr. Karin Sumongkayothin
+% [+] Figure caption centering was fixed
+% [+] thesisGradyear variable was added 
+% [+] Landscape style was added 
+%---------------------------------------------
+% June 1, 2019 -- Dr. Karin Sumongkayothin
+% [+] Listing cation was set to aligned left 
+% [+] Remove using /raggedright in table captions 
+% [+] Correct the spaces between  Name and Lastname 
+% [+] Add title to student name in abstract page
+%---------------------------------------------
+% Aug 1, 2020 -- Dr. Jidapa Kraisangka
+% [+] Fixed space between title and name for long first name
+% [+] Clean some texts and provide example LaTex
+%---------------------------------------------
+% Sep 15, 2021 -- Dr. Jidapa Kraisangka
+% [-] Remove DoB and Place of Birth from Biographies
+%---------------------------------------------
+%=============================================
+
+\documentclass[16pt, a4paper]{book}
+% \documentclass{report}
+% \usepackage{fontspec}
+\newcommand{\thesisCoadvTH}{}
+\usepackage{ifthen}
+\usepackage{graphicx}
+
+\usepackage{fontspec}
+\usepackage{xunicode}
+\usepackage{xltxtra}
+
+
+%====== Add the packages here ================
+\usepackage{enumitem}
+\setlist[itemize]{topsep=0.35\baselineskip,itemsep=0.15\baselineskip,parsep=0pt,partopsep=0pt,leftmargin=1.5em}
+\usepackage{listings}	%For showing programming language in Latex
+\usepackage{caption}
+\usepackage{subcaption}
+\captionsetup{compatibility=false}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{pifont}
+
+\newcommand{\cmark}{\ding{51}}
+\newcommand{\xmark}{\ding{55}}
+
+\usepackage{amsmath}
+\usepackage[hidelinks]{hyperref}
+\usepackage[section]{placeins}
+\usepackage{booktabs}
+
+\usepackage{textcomp}
+\usepackage{multirow}
+\usepackage{float}
+\usepackage{lscape}
+\usepackage{pdflscape}
+% https://www.overleaf.com/project/5dc7fb1fd24fcd000117ca19
+
+\usepackage{longtable}
+\usepackage{array}
+
+%update Mar 31 2023
+\usepackage{adjustbox}
+%=============================================
+
+\makeatletter
+\def\input@path{{styles/}}
+\makeatother
+\usepackage{muictthesis}
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+\usepackage{tabularx}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Set listing options 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\lstset{
+	columns=fullflexible,
+	float=h,
+	frame=single,
+	basicstyle=\fontsize{10}{10}\selectfont\ttfamily,
+	breaklines=true,
+	postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
+	belowcaptionskip=8pt
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Set path directory of figures 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Include more path to figures here
+% \graphicspath{{./figures/chap1/}{./figures/chap2/}{./figures/chap3/}{./figures/chap4/}{./figures/chap5/}}
+
+\XeTeXlinebreaklocale "th"	%Set word wrapping for Thai language
+\XeTeXlinebreakskip = 0pt plus 1.1pt   % 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Thesis Meta Data (edit each field)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Thesis Title 
+\newcommand{\thesisTitle}{Green code smell detection with Visual studio code extension}
+\newcommand{\thesisTitleTH}{PyGreenSense: ระบบตรวจจับ Green Code Smell สำหรับภาษา Python บน VS Code}
+
+% Thesis Keywords
+\newcommand{\thesisKeywords}
+{กรีนโค้ดสเมลล์ (GREEN CODE SMELL) \slash ภาษาไพธอน (PYTHON) \slash วิศวกรรมซอฟต์แวร์ที่ยั่งยืน (GREEN SOFTWARE ENGINEERING) \slash แอ็บสแตรกซินแทกซ์ทรี (AST) \slash SOFTWARE CARBON INTENSITY (SCI) \slash COSMIC FUNCTION POINT (CFP)}
+
+%Author name
+\newcommand{\thesisFirstTitleName}{Mr.} 
+\newcommand{\thesisFirstAuthorName}{Jittakan}
+\newcommand{\thesisFirstAuthorLastName}{Damrongtrakoonwat}
+\newcommand{\thesisFirstTitleNameTH}{นาย}
+\newcommand{\thesisFirstAuthorNameTH}{จิตรกัณฐ์}
+\newcommand{\thesisFirstAuthorLastNameTH}{ดำรงตระกูลวัฒน์}
+\newcommand{\thesisFirstAuthorID}{6587051}
+\newcommand{\thesisFirstAuthorBP}{Bangkok, Thailand}
+\newcommand{\thesisFirstAuthorHC}{Bachelor of Science in Digital Science and Technology, Mahidol University, 2025}
+
+\newcommand{\thesisSecondTitleName}{Mr.}		%Comment all if you don't have second author
+\newcommand{\thesisSecondAuthorName}{Tutchakorn}
+\newcommand{\thesisSecondAuthorLastName}{Gomonkongyou}
+\newcommand{\thesisSecondTitleNameTH}{นาย}
+\newcommand{\thesisSecondAuthorNameTH}{ธัชกร}
+\newcommand{\thesisSecondAuthorLastNameTH}{โกมลคงอยู่}
+\newcommand{\thesisSecondAuthorID}{6587055}
+\newcommand{\thesisSecondAuthorBP}{Bangkok, Thailand}
+\newcommand{\thesisSecondAuthorHC}{Bachelor of Science in Digital Science and Technology, Mahidol University, 2025}
+
+
+\newcommand{\thesisThirdTitleName}{Mr.}			%Comment all if you don't have third author
+\newcommand{\thesisThirdAuthorName}{Suntipap}
+\newcommand{\thesisThirdAuthorLastName}{Chotimanont}
+\newcommand{\thesisThirdTitleNameTH}{นาย}
+\newcommand{\thesisThirdAuthorNameTH}{สันติภาพ}
+\newcommand{\thesisThirdAuthorLastNameTH}{โชติมานนท์}
+\newcommand{\thesisThirdAuthorID}{6587105}
+\newcommand{\thesisThirdAuthorBP}{Yasothon, Thailand}
+\newcommand{\thesisThirdAuthorHC}{Bachelor of Science in Digital Science and Technology, Mahidol University, 2025}
+
+\newcommand{\thesisAuthorsInitials}{I1. Lastname1, I2.  Lastname2, I3. Lastname3} %Initials of Thesis Authors
+
+%Degree that this thesis is for
+\newcommand{\thesisDegree}{วิทยาศาสตรบัณฑิต}
+\newcommand{\thesissubDegree}{สาขาวิทยาการและเทคโนโลยีดิจิทัล}
+
+%Month, year and date of thesis publication
+\newcommand{\thesisAcademicYear}{2025} %Academic Year
+\newcommand{\thesisGradYear}{2025} %Graduated Year
+
+%Department
+%\newcommand{\thesisDep}{Faculty of Information and Communication Technology}
+\newcommand{\thesisDep}{คณะเทคโนโลยีสารสนเทศและการสื่อสาร}
+
+%University
+%\newcommand{\thesisUni}{Mahidol University}
+\newcommand{\thesisUni}{มหาวิทยาลัยมหิดล}
+
+%Advisor name
+\newcommand{\thesisAdv}{Assistant Professor Dr. Thanwadee Sunetnanta}		    %with title name
+\newcommand{\thesisAdvTH}{ผู้ช่วยศาสตราจารย์ ดร. ธันวดี สุเนตนันท์}  		%with title name
+
+%Co-advisor name
+% \def\thesisCoadv{Dr. XXXXXX XXXXXXX}	%with title name; comment if you don't have co-advisor
+% \def\thesisCoadvTH{ดร.xxxxx xxxxx}	
+%===========================================================
+% Copyright
+%\documentclass{article}
+%\usepackage[printwatermark]{xwatermark}
+%\usepackage{lipsum}
+
+
+% \newwatermark*[allpages,color=red!50,angle=45,scale=3,xpos=0,ypos=0]{Copyright of Mahidol University}
+
+\begin{document}
+\renewcommand{\thelstlisting}{\thechapter.\arabic{lstlisting}} %Change listing numbering style
+\makeatletter
+\makeatother
+\newpage
+\coverpage
+\input{frontmatter/acknowledgement.tex}
+\input{frontmatter/abstract.tex}
+\newpage
+
+% \pagenumbering{gobble} % Remove page number from bottom
+%update 30 Mar 2023
+\fancyhead[r]{\thepage}
+\fancyfoot{}
+
+\tableofcontents
+\newpage
+
+%\lstlistoflistings
+\addtocontents{toc}{\vspace*{0.7\baselineskip}}%
+
+\mainmatter		%Reset and set page number to arabic style
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\fancyhead[L]{\ifthenelse{\isodd{\value{page}}}{คณะ ICT มหาวิทยาลัยมหิดล}{}} %odd page header
+\fancyhead[R]{\ifthenelse{\isodd{\value{page}}}{ว.ทบ. (DST)~/~\thepage}{\leftmark~/~\thepage}} %even page header
+
+\input{chapters/chap1.tex} 
+\clearpage
+
+\input{chapters/chap2.tex}
+\clearpage
+
+\input{chapters/chap3.tex}
+\clearpage
+
+\input{chapters/chap4.tex}
+\clearpage
+
+\input{chapters/chap5.tex}
+\clearpage
+
+\input{chapters/chap6.tex}
+\clearpage
+
+% \input{chapTEST}
+% \clearpage
+
+\bibliographystyle{styles/muict}
+\bibliography{bibliography/reference}
+\clearpage
+% \input{frontmatter/AIstatement.tex}
+% \clearpage
+% \input{appendices/appendixA.tex}
+% \clearpage
+% \input{appendices/appendixB.tex}
+% \clearpage
+
+\end{document}

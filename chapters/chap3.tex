@@ -1,0 +1,162 @@
+\chapter{ผลงานที่เกี่ยวข้อง}
+\label{Ch:RelatedWork}
+การพัฒนาซอฟต์แวร์ที่คำนึงถึงประสิทธิภาพด้านพลังงานได้รับความสนใจเพิ่มขึ้นอย่างต่อเนื่องในช่วงทศวรรษที่ผ่านมา โดยเฉพาะงานวิจัยที่มุ่งศึกษาความสัมพันธ์ระหว่างรูปแบบการเขียนโค้ด (code constructs), code smells และผลกระทบด้านพลังงาน ซึ่งเป็นพื้นฐานสำคัญในการพัฒนาเครื่องมือสำหรับตรวจจับ Green Code Smell ในโครงงานนี้ บทนี้นำเสนอผลงานวิจัยที่เกี่ยวข้อง แบ่งออกเป็นสามกลุ่ม ได้แก่ (1) งานศึกษาผลกระทบด้านพลังงานของโครงสร้างซอฟต์แวร์และ code smells (2) งานวิจัยที่วิเคราะห์การ refactor และผลต่อพลังงาน (3) เครื่องมือวิเคราะห์พลังงานเชิงโค้ดและโมเดล Green Code Smell
+
+% -----------------------------------------------------
+
+\section{Energy Impact of Design Patterns and Code Smells}
+งานวิจัยเชิงวิจัยโดย Poy et al.~\cite{poy2025impact} ได้นำเสนอการวิเคราะห์ผลกระทบด้านพลังงานของ design patterns, code smells และเทคนิคการ refactor ผ่านการทำ systematic mapping study ผลการศึกษาระบุว่าโครงสร้างโค้ดที่ไม่เหมาะสม เช่น Long Method, Feature Envy และการใช้ collection ที่ไม่มีประสิทธิภาพ อาจส่งผลให้เกิดการใช้พลังงานสูงขึ้น นอกจากนี้งานยังชี้ให้เห็นว่าการเลือกใช้ design patterns บางประเภท เช่น Singleton หรือ Factory อาจเพิ่มภาระด้านพลังงานหากใช้งานไม่เหมาะสม
+
+งานนี้สร้างพื้นฐานสำคัญว่าการตรวจจับโครงสร้างโค้ดที่เป็น smell สามารถใช้เป็นตัวบ่งชี้เบื้องต้นของความไม่มีประสิทธิภาพด้านพลังงาน ซึ่งสอดคล้องกับเป้าหมายของโครงงานนี้ที่มุ่งตรวจจับ Green Code Smell ในภาษา Python
+
+% -----------------------------------------------------
+
+\section{Energy Impact of Refactoring Code Smells}
+หนึ่งในงานวิจัยที่มีอิทธิพลสูงต่อสาขานี้คือบทความของ Verdecchia et al.~\cite{verdecchia2018energy} ซึ่งทำการทดลองเชิงประจักษ์เพื่อตรวจสอบผลของการ refactor code smells ต่อการใช้พลังงานในแอปพลิเคชัน Java ผลการทดลองระบุว่าในการทดลองบางกรณี การ refactor smell อย่าง Feature Envy และ Long Method สามารถลดการใช้พลังงานได้สูงถึง 49\% อย่างไรก็ตาม smell บางประเภท เช่น God Class อาจทำให้พลังงานเพิ่มขึ้นเนื่องจากการสร้างออบเจกต์และการส่งข้อความระหว่างคลาสเพิ่มขึ้น
+
+งานนี้ชี้ให้เห็นว่า code smells มีผลต่อประสิทธิภาพด้านพลังงานจริง แต่ผลกระทบแตกต่างกันไปตามประเภทของ smell และบริบทของระบบ ซึ่งช่วยสนับสนุนแนวคิดว่าควรมีการพัฒนากฎเฉพาะเพื่อประเมินผลกระทบของโค้ดต่อพลังงาน เช่นเดียวกับกฎที่ใช้ในโครงงานนี้
+
+% -----------------------------------------------------
+
+\section{Green Software Patterns and Energy-Aware Practices}
+แนวคิดเชิงลึกเกี่ยวกับการพัฒนาซอฟต์แวร์อย่างยั่งยืนได้รับการขยายความโดย Le Goaër~\cite{leGoaer2024tactics} ซึ่งได้นำเสนอชุด tactics, patterns และ energy smells สำหรับซอฟต์แวร์สมัยใหม่ โดยเน้นว่าการเพิ่มประสิทธิภาพด้านพลังงานไม่ควรถูกมองเฉพาะในระดับฮาร์ดแวร์ แต่ควรออกแบบตั้งแต่ระดับสถาปัตยกรรมของซอฟต์แวร์ งานนี้ยืนยันแนวคิดของวงการ Green Software Engineering ว่าการลดการคำนวณซ้ำซ้อน การจัดการทรัพยากรอย่างเหมาะสม และการลดภาระของ API ที่กินพลังงานสูง มีผลโดยตรงต่อ carbon footprint ของระบบ
+
+เนื้อหานี้ถูกนำมาใช้เป็นแนวทางในการออกแบบชุดกฎของ Green Code Smell ในโครงงานของผู้จัดทำ โดยเฉพาะการตีความ smell ดั้งเดิมให้เป็นรูปแบบที่ส่งผลต่อพลังงานโดยตรง
+
+% -----------------------------------------------------
+
+\section{การศึกษาและเปรียบเทียบเครื่องมือวิเคราะห์โค้ดแบบ Static ที่เกี่ยวข้อง}
+นอกจากงานวิจัยที่ศึกษาความสัมพันธ์ระหว่าง {\italicfont code smells} และพลังงานแล้ว ระบบนิเวศของเครื่องมือที่ใช้วิเคราะห์ซอฟต์แวร์ก็มีบทบาทสำคัญต่อการพัฒนาแนวทาง {\italicfont Green Software Engineering} เช่นกัน เครื่องมือเหล่านี้สามารถแบ่งได้เป็น 2 กลุ่มใหญ่ ได้แก่ {\italicfont static analysis} ซึ่งมุ่งตรวจสอบโครงสร้างของโค้ดโดยไม่ต้องรันโปรแกรม และ {\italicfont dynamic analysis} ซึ่งมุ่งวัดพฤติกรรมจริงของโปรแกรมระหว่างการทำงาน เช่น การใช้พลังงาน การใช้ CPU หรือการปล่อยคาร์บอน
+
+ในบริบทของภาษา Python และเครื่องมือที่เกี่ยวข้องกับแนวคิด {\italicfont green software} มีทั้งเครื่องมือที่เน้นคุณภาพโค้ดทั่วไป เครื่องมือที่เน้น {\italicfont code smell detection} และเครื่องมือที่เน้นการวัดผลกระทบด้านพลังงานหรือคาร์บอนโดยตรง ดังรายละเอียดต่อไปนี้
+
+\subsection{aDoctor}
+{\boldfont aDoctor} เป็นเครื่องมือที่ถูกพัฒนาขึ้นสำหรับบริบทของแอปพลิเคชันบน Android โดยมุ่งตรวจจับปัญหาที่สัมพันธ์กับแนวคิดด้าน {\italicfont Green Code Smell} ในระดับอุปกรณ์พกพา จุดเด่นของเครื่องมือนี้คือการช่วยสะท้อนปัญหาเชิงโครงสร้างและรูปแบบการพัฒนาที่อาจส่งผลต่อประสิทธิภาพการใช้พลังงานของแอปพลิเคชันบนอุปกรณ์เคลื่อนที่ อย่างไรก็ตาม ขอบเขตของ aDoctor ยังจำกัดอยู่ในระบบนิเวศของ Android เป็นหลัก จึงไม่สามารถนำมาประยุกต์ใช้กับโครงการภาษา Python ได้โดยตรง
+
+\subsection{CAST Highlight}
+{\boldfont CAST Highlight} เป็นเครื่องมือวิเคราะห์ซอฟต์แวร์ที่รองรับหลายภาษาและถูกใช้ในระดับอุตสาหกรรมเพื่อประเมินคุณภาพของระบบซอฟต์แวร์ในภาพรวม โดยสามารถรายงานข้อมูลด้านคุณภาพของโค้ด ความซับซ้อน และตัวชี้วัดบางส่วนที่เกี่ยวข้องกับประสิทธิภาพของระบบได้ จุดเด่นของเครื่องมือนี้คือการรองรับซอฟต์แวร์หลายภาษาและมีรูปแบบการรายงานที่เหมาะกับการประเมินเชิงจัดการ อย่างไรก็ตาม เครื่องมือนี้ไม่ได้ออกแบบมาเพื่อใช้วิเคราะห์ {\italicfont Green Code Smell} สำหรับภาษา Python โดยเฉพาะ
+
+\subsection{ecoCode และ SonarQube}
+{\boldfont ecoCode} เป็นโครงการที่ขยายแนวคิด {\italicfont Green Code Smells} ไปสู่การใช้งานจริงผ่านการพัฒนา {\italicfont plugin} สำหรับ {\boldfont SonarQube} เพื่อใช้ตรวจจับรูปแบบของโค้ดที่อาจส่งผลเสียต่อการใช้พลังงานและ {\italicfont carbon footprint} ของระบบ จุดเด่นของ ecoCode คือการรวบรวมองค์ความรู้ด้าน {\italicfont green coding} ให้อยู่ในรูปของกฎที่สามารถนำไปใช้กับการวิเคราะห์แบบ {\italicfont static} ได้จริง
+
+ในขณะเดียวกัน {\boldfont SonarQube} เป็นแพลตฟอร์มวิเคราะห์คุณภาพโค้ดระดับองค์กรที่ได้รับความนิยมอย่างแพร่หลาย โดยมีบทบาทเป็นศูนย์กลางสำหรับการจัดการกฎการตรวจสอบ การแสดงผลรายงาน และการติดตามคุณภาพของซอฟต์แวร์ในกระบวนการพัฒนา แม้ ecoCode จะเป็นรากฐานสำคัญของแนวคิด {\italicfont green code analysis} ในภาคปฏิบัติ แต่ข้อจำกัดคือบริบทหลักของเครื่องมือนี้ยังเชื่อมโยงกับ SonarQube และยังไม่ได้ออกแบบมาเฉพาะสำหรับภาษา Python หรือการใช้งานผ่าน VS Code โดยตรง
+
+\subsection{PySmell}
+{\boldfont PySmell} เป็นเครื่องมือรุ่นเก่าที่ถูกพัฒนาขึ้นเพื่อช่วยวิเคราะห์คุณภาพโค้ดในภาษา Python โดยเน้นการตรวจจับปัญหาเชิงโครงสร้างและ {\italicfont code smells} อย่างไรก็ตาม เครื่องมือนี้มีข้อจำกัดสำคัญคือการพัฒนาไม่ได้ต่อเนื่องและไม่สอดคล้องกับไวยากรณ์ของ Python รุ่นใหม่ ทำให้ไม่เหมาะกับการใช้งานในโครงการสมัยใหม่มากนัก
+
+กรณีของ PySmell จึงสะท้อนบทเรียนสำคัญว่า เครื่องมือที่ไม่มีการบำรุงรักษาอย่างต่อเนื่องอาจไม่สามารถตอบโจทย์ระบบนิเวศของภาษา Python ที่เปลี่ยนแปลงรวดเร็วได้
+
+\subsection{Pylint}
+{\boldfont Pylint} เป็นหนึ่งในเครื่องมือมาตรฐานสำหรับตรวจสอบคุณภาพโค้ดในภาษา Python โดยทำหน้าที่เป็น {\italicfont linter} ที่ช่วยตรวจจับข้อผิดพลาดทางโปรแกรม ความไม่สอดคล้องกับมาตรฐานการเขียนโค้ด และโครงสร้างที่อาจก่อให้เกิดปัญหาในอนาคต กลไกหลักของเครื่องมือนี้อาศัยการสร้าง AST จากซอร์สโค้ดและทำการตรวจสอบกฎต่าง ๆ บนโครงสร้างดังกล่าว
+
+แม้ว่า Pylint จะไม่ได้ถูกออกแบบมาโดยตรงเพื่อรองรับ {\italicfont Green Coding} แต่กฎหลายข้อของ Pylint มีผลทางอ้อมต่อการลดการใช้ทรัพยากร เช่น การแจ้งเตือน {\italicfont unreachable code}, {\italicfont unused variables} หรือโค้ดที่ซ้ำซ้อน ซึ่งช่วยลดภาระของโปรแกรมในระดับหนึ่ง อย่างไรก็ตาม จุดอ่อนของ Pylint คือประสิทธิภาพในการทำงานที่ค่อนข้างช้าเมื่อเทียบกับเครื่องมือยุคใหม่ และอาจมีการแจ้งเตือนที่เกินความจำเป็นในบางกรณี
+
+\subsection{Ruff}
+{\boldfont Ruff} เป็นเครื่องมือ {\italicfont linter} และ {\italicfont formatter} สำหรับภาษา Python ที่ถูกพัฒนาด้วยภาษา Rust และได้รับความสนใจอย่างมากจากจุดเด่นด้านความเร็วเมื่อเทียบกับเครื่องมือรุ่นก่อนหน้า เช่น Pylint หรือ Flake8 แม้ Ruff จะไม่ได้ประกาศตัวว่าเป็นเครื่องมือด้าน {\italicfont green coding} โดยตรง แต่ประสิทธิภาพในการวิเคราะห์ที่สูงช่วยลดต้นทุนเวลาและทรัพยากรในการตรวจสอบโค้ดได้อย่างมีนัยสำคัญ
+
+อีกทั้ง Ruff ยังมีศักยภาพในการนำไปเป็นฐานสำหรับการพัฒนา {\italicfont custom rules} ในอนาคต เนื่องจากมีโครงสร้างที่ทันสมัยและรองรับระบบนิเวศของ Python ได้ดี
+
+\subsection{Green Metrics Tool}
+{\boldfont Green Metrics Tool} เป็นเครื่องมือที่เน้นการวัดผลเชิงองค์รวมของประสิทธิภาพด้านพลังงานและสิ่งแวดล้อมของซอฟต์แวร์ โดยแนวคิดมีความใกล้เคียงกับ CodeCarbon ในแง่ที่ให้ความสำคัญกับการวัดค่าจริงจากการทำงานของระบบ มากกว่าการประเมินจากโครงสร้างโค้ดเพียงอย่างเดียว เครื่องมือนี้จึงมีประโยชน์ในการใช้เป็น {\italicfont ground truth} สำหรับงานทดลองที่ต้องการตรวจสอบว่าการเปลี่ยนแปลงในระดับโค้ดส่งผลต่อพลังงานและคาร์บอนจริงหรือไม่
+
+\subsection{CodeCarbon}
+{\boldfont CodeCarbon} เป็นเครื่องมือในกลุ่ม {\italicfont dynamic analysis} ที่มุ่งวัดผลกระทบทางสิ่งแวดล้อมของการรันโปรแกรมโดยตรง โดยทำหน้าที่วัดการใช้พลังงานของฮาร์ดแวร์ เช่น CPU และ GPU แล้วแปลงผลเป็นค่าการปล่อยคาร์บอนไดออกไซด์เทียบเท่า ($CO_2eq$) จุดเด่นสำคัญของ CodeCarbon คือการเชื่อมโยงข้อมูลพลังงานเข้ากับค่าความเข้มข้นของคาร์บอน ({\italicfont carbon intensity}) ของโครงข่ายไฟฟ้าในพื้นที่ที่รันโปรแกรม
+
+ด้วยเหตุนี้ CodeCarbon จึงเหมาะสำหรับใช้เป็นฐานในการประเมินผลกระทบด้านสิ่งแวดล้อมของซอฟต์แวร์จริงมากกว่าเครื่องมือที่อาศัยการคาดการณ์จากโครงสร้างโค้ดเพียงอย่างเดียว และเป็นหนึ่งในองค์ประกอบสำคัญที่โครงงานนี้นำมาผสานเข้ากับการตรวจจับ {\italicfont Green Code Smells}
+
+\subsection{GSF Impact Framework}
+{\boldfont GSF Impact Framework} เป็นกรอบแนวคิดจาก {\italicfont Green Software Foundation} ที่เน้นการรายงานผลกระทบด้านคาร์บอนของซอฟต์แวร์ในรูปแบบที่เป็นระบบ โดยไม่ได้มุ่งเน้นเฉพาะการตรวจจับ {\italicfont code smell} แต่ให้ความสำคัญกับการเก็บข้อมูลและประเมิน {\italicfont software carbon intensity} ในเชิงมาตรฐาน กรอบแนวคิดนี้มีประโยชน์ต่อการสร้างภาพรวมของผลกระทบด้านสิ่งแวดล้อมในระดับระบบ และช่วยสนับสนุนแนวทางการพัฒนาซอฟต์แวร์ที่สามารถตรวจสอบและเปรียบเทียบผลลัพธ์ได้อย่างเป็นระบบ
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|l|c|c|c|c|c|c|c|c|}
+\hline
+{\boldfont Tools} &
+{\boldfont Green Code Smell} &
+{\boldfont Feedback Report} &
+{\boldfont Carbon Tracking} &
+{\boldfont Energy Tracking} &
+{\boldfont Runtime Result} &
+{\boldfont Languages} &
+{\boldfont Development} &
+{\boldfont Level} \\
+\hline
+CAST Highlight
+& \checkmark & \checkmark & \checkmark & \checkmark & \xmark & 10+ Languages & PC & Static \\
+\hline
+aDoctor
+& \checkmark & \checkmark & \xmark & \xmark & \xmark & Java (Android) & Mobile & Static \\
+\hline
+ecoCode (SonarQube plugin)
+& \checkmark & \checkmark & \xmark & \xmark & \xmark & Multi-language & PC / Server & Static \\
+\hline
+SonarQube
+& \xmark & \checkmark & \xmark & \xmark & \xmark & Multi-language & PC / Server & Static \\
+\hline
+PySmell
+& \xmark & \checkmark & \xmark & \xmark & \xmark & Python & PC & Static \\
+\hline
+Pylint
+& \xmark & \checkmark & \xmark & \xmark & \xmark & Python & PC & Static \\
+\hline
+Ruff
+& \xmark & \checkmark & \xmark & \xmark & \xmark & Python & PC & Static \\
+\hline
+Green Metrics Tool
+& \xmark & \checkmark & \checkmark & \checkmark & \checkmark & General & PC / Server & Dynamic \\
+\hline
+CodeCarbon
+& \xmark & \checkmark & \checkmark & \checkmark & \checkmark & Python & PC & Dynamic \\
+\hline
+GSF Impact Framework
+& \xmark & \checkmark & \checkmark & \checkmark & \checkmark & General & PC / Cloud & Framework \\
+\hline
+\end{tabular}
+}
+\captionsetup{justification=centering, name=ตาราง}
+\caption{ตารางสรุปการเปรียบเทียบเครื่องมือที่เกี่ยวข้องในระบบนิเวศของงานวิจัย}
+\label{table:existing-tools-summary}
+\end{table}
+
+\subsection{Python tools ที่ใช้เป็นพื้นฐานในงานวิจัยนี้}
+แม้จะมีเครื่องมือจำนวนมากในระบบนิเวศของ {\italicfont software quality} และ {\italicfont green software} แต่ในโครงงานนี้ได้เลือกใช้เครื่องมือที่เกี่ยวข้องกับภาษา Python โดยตรงและเหมาะสมกับการเปรียบเทียบในระดับ baseline ดังนี้
+
+\begin{itemize}
+    \item {\boldfont Vulture} เป็นเครื่องมือสำหรับตรวจจับ {\italicfont Dead Code} เช่น ตัวแปร ฟังก์ชัน คลาส หรือ {\italicfont import} ที่ไม่ได้ถูกใช้งาน โดยแสดงผลลัพธ์ในรูปแบบ {\italicfont log} และทำงานด้วยวิธี {\italicfont static analysis} โดยไม่ต้องรันโปรแกรมจริง
+    \item {\boldfont PyExamine} เป็นเครื่องมือสำหรับตรวจจับ {\italicfont Code Smells} ในภาษา Python หลายประเภท เช่น ความซับซ้อนของโค้ด ({\italicfont cyclomatic complexity}) และโค้ดที่ยาวเกินไป โดยแสดงผลในรูปแบบ {\italicfont Log} และจัดอยู่ในกลุ่มเครื่องมือแบบ {\italicfont static}
+    \item {\boldfont Smell-detector-python} เป็นเครื่องมือที่พัฒนาขึ้นเพื่อวิเคราะห์ {\italicfont Code Smells} ของโปรแกรม Python โดยเน้นการตรวจสอบโครงสร้างของโค้ดและรูปแบบการเขียนโปรแกรม ผลลัพธ์จะแสดงในรูปแบบ {\italicfont Log} และทำงานแบบ {\italicfont Static Analysis}
+    \item {\boldfont PyGreenSense} เป็นเครื่องมือที่ใช้ตรวจจับ {\italicfont Green Code Smells} ซึ่งเกี่ยวข้องกับประสิทธิภาพและการใช้พลังงานของโปรแกรม โดยผลลัพธ์จะแสดงในรูปแบบ {\italicfont Visual Report} ผ่านส่วนขยายบน VS Code และทำงานในลักษณะ {\italicfont Hybrid} กล่าวคือ ส่วนของการตรวจจับ {\italicfont Code Smell} ใช้การวิเคราะห์แบบ {\italicfont Static} ผ่าน AST ขณะที่ส่วนของ {\italicfont Metrics} และ {\italicfont Reporting} จะอาศัยข้อมูลจากการรันจริงเพื่อประเมินพลังงาน คาร์บอน และค่าที่เกี่ยวข้องเพิ่มเติม
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\begin{adjustbox}{max width=\textwidth}
+\renewcommand{\arraystretch}{1.3}
+\setlength{\tabcolsep}{6pt}
+\begin{tabular}{|p{3.5cm}|p{3.5cm}|p{3cm}|p{3cm}|p{2cm}|}
+\hline
+{\boldfont Tools} & {\boldfont Code Smell Type} & {\boldfont Output Type} & {\boldfont Language} & {\boldfont Level}
+\\
+\hline
+PyExamine & Code Smells & Log & Python & Static
+\\
+\hline
+Smell-detector-python & Code Smells & Log & Python & Static
+\\
+\hline
+Vulture & Dead Code & Log & Python & Static
+\\
+\hline
+PyGreenSense & Green Code Smells & Visual Report (Extension) & Python & Hybrid
+\\
+\hline
+\end{tabular}
+\end{adjustbox}
+\captionsetup{justification=centering, name=ตาราง}
+\caption{ตารางเปรียบเทียบเครื่องมือวิเคราะห์โค้ด Python ที่ใช้ในงานวิจัย}
+\label{table:python-static-analysis-tools}
+\end{table}
+
+โดยสรุป เครื่องมือที่เลือกมาในงานวิจัยนี้ครอบคลุมทั้งการตรวจจับ {\italicfont Dead Code}, {\italicfont Code Smells} ทั่วไป และ {\italicfont Green Code Smells} ซึ่งช่วยให้สามารถวิเคราะห์คุณภาพของโค้ดได้ในหลายมิติ ทั้งด้านโครงสร้าง ความซับซ้อน และประสิทธิภาพการใช้พลังงาน
