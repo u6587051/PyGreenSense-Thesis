@@ -5,13 +5,13 @@
 %============ Logs ===========================
 % % May 2, 2019 -- Dr. Karin Sumongkayothin
 % [+] Figure caption centering was fixed
-% [+] thesisGradyear variable was added 
-% [+] Landscape style was added 
+% [+] thesisGradyear variable was added
+% [+] Landscape style was added
 %---------------------------------------------
 % June 1, 2019 -- Dr. Karin Sumongkayothin
-% [+] Listing cation was set to aligned left 
-% [+] Remove using /raggedright in table captions 
-% [+] Correct the spaces between  Name and Lastname 
+% [+] Listing cation was set to aligned left
+% [+] Remove using /raggedright in table captions
+% [+] Correct the spaces between  Name and Lastname
 % [+] Add title to student name in abstract page
 %---------------------------------------------
 % Aug 1, 2020 -- Dr. Jidapa Kraisangka
@@ -78,35 +78,35 @@
 \usepackage{tabularx}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%Set listing options 
+%Set listing options
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \lstset{
-	columns=fullflexible,
-	float=h,
-	frame=single,
-	basicstyle=\fontsize{10}{10}\selectfont\ttfamily,
-	breaklines=true,
-	postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
-	belowcaptionskip=8pt
+columns=fullflexible,
+float=h,
+frame=single,
+basicstyle=\fontsize{10}{10}\selectfont\ttfamily,
+breaklines=true,
+postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
+belowcaptionskip=8pt
 }
 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%Set path directory of figures 
+%Set path directory of figures
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% Include more path to figures here
 % \graphicspath{{./figures/chap1/}{./figures/chap2/}{./figures/chap3/}{./figures/chap4/}{./figures/chap5/}}
 
 \XeTeXlinebreaklocale "th"	%Set word wrapping for Thai language
-\XeTeXlinebreakskip = 0pt plus 1.1pt   % 
+\XeTeXlinebreakskip = 0pt plus 1.1pt   %
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Thesis Meta Data (edit each field)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%Thesis Title 
+%Thesis Title
 \newcommand{\thesisTitle}{Green code smell detection with Visual studio code extension}
 \newcommand{\thesisTitleTH}{PyGreenSense: ระบบตรวจจับ Green Code Smell สำหรับภาษา Python บน VS Code}
 
@@ -115,7 +115,7 @@
 {กรีนโค้ดสเมลล์ (GREEN CODE SMELL) \slash ภาษาไพธอน (PYTHON) \slash วิศวกรรมซอฟต์แวร์ที่ยั่งยืน (GREEN SOFTWARE ENGINEERING) \slash แอ็บสแตรกซินแทกซ์ทรี (AST) \slash SOFTWARE CARBON INTENSITY (SCI) \slash COSMIC FUNCTION POINT (CFP)}
 
 %Author name
-\newcommand{\thesisFirstTitleName}{Mr.} 
+\newcommand{\thesisFirstTitleName}{Mr.}
 \newcommand{\thesisFirstAuthorName}{Jittakan}
 \newcommand{\thesisFirstAuthorLastName}{Damrongtrakoonwat}
 \newcommand{\thesisFirstTitleNameTH}{นาย}
@@ -170,7 +170,7 @@
 
 %Co-advisor name
 % \def\thesisCoadv{Dr. XXXXXX XXXXXXX}	%with title name; comment if you don't have co-advisor
-% \def\thesisCoadvTH{ดร.xxxxx xxxxx}	
+% \def\thesisCoadvTH{ดร.xxxxx xxxxx}
 %===========================================================
 % Copyright
 %\documentclass{article}
@@ -181,60 +181,60 @@
 % \newwatermark*[allpages,color=red!50,angle=45,scale=3,xpos=0,ypos=0]{Copyright of Mahidol University}
 
 \begin{document}
-\renewcommand{\thelstlisting}{\thechapter.\arabic{lstlisting}} %Change listing numbering style
-\makeatletter
-\makeatother
-\newpage
-\coverpage
-\input{frontmatter/acknowledgement.tex}
-\input{frontmatter/abstract.tex}
-\newpage
+    \renewcommand{\thelstlisting}{\thechapter.\arabic{lstlisting}} %Change listing numbering style
+    \makeatletter
+    \makeatother
+    \newpage
+    \coverpage
+    \input{frontmatter/acknowledgement.tex}
+    \input{frontmatter/abstract.tex}
+    \newpage
 
-% \pagenumbering{gobble} % Remove page number from bottom
-%update 30 Mar 2023
-\fancyhead[r]{\thepage}
-\fancyfoot{}
+    % \pagenumbering{gobble} % Remove page number from bottom
+    %update 30 Mar 2023
+    \fancyhead[r]{\thepage}
+    \fancyfoot{}
 
-\tableofcontents
-\newpage
+    \tableofcontents
+    \newpage
 
-%\lstlistoflistings
-\addtocontents{toc}{\vspace*{0.7\baselineskip}}%
+    %\lstlistoflistings
+    \addtocontents{toc}{\vspace*{0.7\baselineskip}}%
 
-\mainmatter		%Reset and set page number to arabic style
-\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
-\fancyhead[L]{\ifthenelse{\isodd{\value{page}}}{คณะ ICT มหาวิทยาลัยมหิดล}{}} %odd page header
-\fancyhead[R]{\ifthenelse{\isodd{\value{page}}}{ว.ทบ. (DST)~/~\thepage}{\leftmark~/~\thepage}} %even page header
+    \mainmatter		%Reset and set page number to arabic style
+    \renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+    \fancyhead[L]{\ifthenelse{\isodd{\value{page}}}{คณะ ICT มหาวิทยาลัยมหิดล}{}} %odd page header
+    \fancyhead[R]{\ifthenelse{\isodd{\value{page}}}{ว.ทบ. (DST)~/~\thepage}{\leftmark~/~\thepage}} %even page header
 
-\input{chapters/chap1.tex} 
-\clearpage
+    \input{chapters/chap1.tex}
+    \clearpage
 
-\input{chapters/chap2.tex}
-\clearpage
+    \input{chapters/chap2.tex}
+    \clearpage
 
-\input{chapters/chap3.tex}
-\clearpage
+    \input{chapters/chap3.tex}
+    \clearpage
 
-\input{chapters/chap4.tex}
-\clearpage
+    \input{chapters/chap4.tex}
+    \clearpage
 
-\input{chapters/chap5.tex}
-\clearpage
+    \input{chapters/chap5.tex}
+    \clearpage
 
-\input{chapters/chap6.tex}
-\clearpage
+    \input{chapters/chap6.tex}
+    \clearpage
 
-% \input{chapTEST}
-% \clearpage
+    % \input{chapTEST}
+    % \clearpage
 
-\bibliographystyle{styles/muict}
-\bibliography{bibliography/reference}
-\clearpage
-% \input{frontmatter/AIstatement.tex}
-% \clearpage
-% \input{appendices/appendixA.tex}
-% \clearpage
-% \input{appendices/appendixB.tex}
-% \clearpage
+    \bibliographystyle{styles/muict}
+    \bibliography{bibliography/reference}
+    \clearpage
+    % \input{frontmatter/AIstatement.tex}
+    % \clearpage
+    % \input{appendices/appendixA.tex}
+    % \clearpage
+    % \input{appendices/appendixB.tex}
+    % \clearpage
 
 \end{document}

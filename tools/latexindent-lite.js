@@ -26,6 +26,8 @@ function countMatches(text, pattern) {
 
 function formatLatex(source, indentUnit) {
   let level = 0;
+  let rawEnv = null;
+  const rawEnvironments = new Set(["lstlisting", "verbatim", "Verbatim", "minted"]);
 
   return source
     .replace(/\r\n/g, "\n")
@@ -39,6 +41,20 @@ function formatLatex(source, indentUnit) {
         return "";
       }
 
+      if (rawEnv) {
+        if (trimmed.match(new RegExp(`^\\\\end\\{${rawEnv}\\}`))) {
+          rawEnv = null;
+        }
+
+        return trimmedRight;
+      }
+
+      const rawBegin = trimmed.match(/^\\begin\{([^}]+)\}/);
+      if (rawBegin && rawEnvironments.has(rawBegin[1])) {
+        rawEnv = rawBegin[1];
+        return `${indentUnit.repeat(level)}${trimmed}`;
+      }
+
       const preClose =
         countMatches(trimmed, /^\\end\{/g) +
         countMatches(trimmed, /^\\fi\b/g) +
@@ -50,7 +66,7 @@ function formatLatex(source, indentUnit) {
 
       const begins = countMatches(trimmed, /\\begin\{/g);
       const ends = countMatches(trimmed, /\\end\{/g);
-      const ifs = countMatches(trimmed, /\\if[a-zA-Z]*\b/g);
+      const ifs = countMatches(trimmed, /\\if(?!thenelse\b)[a-zA-Z]*\b/g);
       const fis = countMatches(trimmed, /\\fi\b/g);
       const elses = countMatches(trimmed, /\\else\b/g);
 

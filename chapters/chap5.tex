@@ -219,8 +219,6 @@
 \label{tab:evaluation-smell-counts}
 \end{table}
 
-ผลลัพธ์จากตาราง \ref{tab:evaluation-result-metrics} และตาราง \ref{tab:evaluation-smell-counts} แสดงให้เห็นว่า การ refactor มีผลโดยตรงต่อการลดจำนวน Code Smell และจำนวนบรรทัดของโค้ดในทุกขนาดของชุดทดสอบ โดยเฉพาะในชุด Micro และ Small ที่ค่าพลังงานและคาร์บอนลดลงหลังการ refactor อย่างไรก็ตาม ในชุด Medium และ Large แม้จำนวน Code Smell และ CFP จะลดลง แต่ค่าคาร์บอนและพลังงานกลับเพิ่มขึ้นเล็กน้อย ซึ่งอาจเกิดจากปัจจัยภายนอก เช่น overhead ระหว่างการรัน สภาพแวดล้อมของเครื่องทดสอบ หรือความผันผวนของการวัดในระดับพลังงานต่ำมาก ดังนั้น ผลลัพธ์ด้านคาร์บอนจึงควรตีความร่วมกับจำนวนรอบการทดสอบ ขนาดของโปรเจกต์ และบริบทการทำงานของโค้ด
-
 \subsection{ตัวอย่างผลก่อนและหลังการ refactor}
 
 เพื่อให้เห็นผลของการปรับปรุงโค้ดในระดับกรณีศึกษา รูป \ref{fig:ch5_godclass_refactor} และรูป \ref{fig:ch5_duplicate_refactor} แสดงตัวอย่างผลก่อนและหลังการ refactor ของปัญหา {\italicfont God Class} และ {\italicfont Duplicated Code} ตามลำดับ ซึ่งช่วยยืนยันว่าระบบสามารถใช้ติดตามผลการลด Code Smell ได้จริงในระดับไฟล์ทดสอบ
@@ -333,6 +331,139 @@
 ในเชิงวิธีวิทยา การมีมาตรวัดดังกล่าวช่วยให้ผู้ใช้ไม่ได้เห็นเพียงจำนวน {\italicfont code smell} เท่านั้น แต่ยังเห็นผลกระทบด้านพลังงานและสิ่งแวดล้อมในรูปแบบที่สามารถตีความเชิงเปรียบเทียบได้ ซึ่งสอดคล้องกับแนวคิด {\italicfont SCI per functional unit} ที่กล่าวไว้ในบททฤษฎีที่เกี่ยวข้อง \cite{sciSpecification,codecarbonMethodology,abran2018cosmic}
 
 ดังแสดงในรูป \ref{fig:ch5_webview_analysis} ส่วนของ metric cards และ execution details ถูกออกแบบให้ผู้ใช้เห็นค่าหลัก เช่น carbon emission, CFP, LOC, SCI / line และ SCI / CFP พร้อมกันในหน้ารายงานเดียว ทำให้การตีความผลในเชิงก่อน/หลังการปรับปรุงโค้ดสามารถทำได้สะดวกขึ้น ขณะเดียวกันรูป \ref{fig:ch5_webview_history} และรูป \ref{fig:ch5_webview_output} ช่วยยืนยันว่าระบบรองรับการติดตามผลย้อนหลังและตรวจสอบผลจากการรันล่าสุดได้ภายในรายงานเดียวกัน
+
+นอกจากนี้ ผู้จัดทำได้เปรียบเทียบผลลัพธ์ที่แสดงผ่าน {\italicfont Webview Dashboard} กับผลลัพธ์ดิบจากการรันไลบรารีผ่าน Terminal เพื่อยืนยันว่าข้อมูลด้านพลังงาน คาร์บอน และรายละเอียดปัญหาที่ตรวจพบใน Extension มีความสอดคล้องกับผลลัพธ์จาก {\italicfont PyGreenSense CLI} โดยตรง ดังแสดงในรูป \ref{fig:ch5_webview_energy_metrics}, รูป \ref{fig:ch5_webview_issue_details} และรายการ \ref{lst:ch5_terminal_library_output} กรณีทดสอบนี้ใช้ไฟล์ \texttt{tests/before.py} ซึ่งตรวจพบปัญหารวม 9 รายการ โดยค่าหลักที่ตรงกัน ได้แก่ carbon emission เท่ากับ $4.107350 \times 10^{-7}$ kg CO$_2$, energy consumption เท่ากับ $1.000 \times 10^{-6}$ kWh, CFP เท่ากับ 43, LOC เท่ากับ 345, emissions rate เท่ากับ 24.98 gCO$_2$eq/kWh และจำนวนการรัน 5 รอบ
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/chap5/webview_energy_metrics.png}
+    \captionsetup{name=รูป}
+    \caption{ผลลัพธ์ด้านพลังงานและคาร์บอนผ่าน Webview Dashboard}
+    \label{fig:ch5_webview_energy_metrics}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/chap5/webview_issue_details.png}
+    \captionsetup{name=รูป}
+    \caption{รายละเอียดปัญหาที่ตรวจพบผ่านแท็บ Issues ของ Webview Dashboard}
+    \label{fig:ch5_webview_issue_details}
+\end{figure}
+
+\begingroup
+\captionsetup[lstlisting]{format=plain,justification=centering,singlelinecheck=false}
+\begin{lstlisting}[
+    captionpos=b,
+    caption={ผลลัพธ์ด้านพลังงานและคาร์บอนจาก Terminal output ของ PyGreenSense Library},
+    label={lst:ch5_terminal_library_output},
+    basicstyle={\fontsize{8}{9}\selectfont\ttfamily},
+    breaklines=true,
+    breakatwhitespace=true
+]
+Analyzing 1 Python file(s)...
+
+================================================================================
+Found 9 issue(s) in 1 file(s):
+================================================================================
+
+tests/before.py (9 issue(s))
+--------------------------------------------------------------------------------
+
+  DeadCode (3 issue(s)):
+    Line 286: Unused function 'generate_payroll_report' is never referenced. Suggest removing it.
+    Line 308: Unused function 'generate_payroll_report_backup' is never referenced. Suggest removing it.
+    Line 363: Unused function 'generate_annual_report' is never referenced. Suggest removing it.
+
+  DuplicatedCode (2 issue(s)):
+    Line 286: Similar function/method implementations (similarity: 92.5%): Company.generate_payroll_report() (line 286, 8 statements), Company.generate_payroll_report_backup() (line 308, 7 statements). Consider refactoring into a single function.
+    Line 327: Similar function/method implementations (similarity: 100.0%): Company.find_managers() (line 327, 4 statements), Company.find_vice_presidents() (line 335, 4 statements), Company.find_interns() (line 343, 4 statements). Consider refactoring into a single function.
+
+  GodClass (1 issue(s)):
+    Line 276: Class 'Company' is a God Class: complexity 40 (max: 35), 143 lines (max: 100). Consider refactoring by extract into sub class.
+
+  LongMethod (1 issue(s)):
+    Line 363: Method 'generate_annual_report' is too long: LOC: 56 (max: 25), Cyclomatic Complexity: 13 (max: 10). Consider refactoring by extracting smaller methods.
+
+  MutableDefaultArguments (2 issue(s)):
+    Line 279: Function '__init__' has a mutable default argument. Consider using None and initializing inside the function.
+    Line 286: Function 'generate_payroll_report' has a mutable default argument. Consider using None and initializing inside the function.
+
+================================================================================
+Summary by Rule:
+--------------------------------------------------------------------------------
+  DeadCode: 3 issue(s)
+  DuplicatedCode: 2 issue(s)
+  MutableDefaultArguments: 2 issue(s)
+  GodClass: 1 issue(s)
+  LongMethod: 1 issue(s)
+================================================================================
+
+
+Tracking carbon emissions for: /Users/tardi9rad3/hym-dev/GitHub/PyGreenSense-Library/tests/before.py
+   Running 5 iterations for average calculations...
+--------------------------------------------------------------------------------
+
+Run 1/5...
+  Run 1 completed
+
+Run 2/5...
+  Run 2 completed
+
+Run 3/5...
+  Run 3 completed
+
+Run 4/5...
+  Run 4 completed
+
+Run 5/5...
+  Run 5 completed
+
+Program output (from last run):
+[]
+[SalariedEmployee(name='Louis', role='manager', vacation_days=25, monthly_salary=5000)]
+[HourlyEmployee(name='Tim', role='intern', vacation_days=25, hourly_rate=50, amount=10)]
+Paying employee Louis a monthly salary of $5000.
+Have fun on your holiday. Don't forget to check your emails!
+
+
+================================================================================
+GREEN CODE CARBON EMISSIONS REPORT
+================================================================================
+
+Execution Details:
+  Target file: /Users/tardi9rad3/hym-dev/GitHub/PyGreenSense-Library/tests/before.py
+  Duration: 0.00 seconds
+
+Energy & Emissions:
+  Total energy consumed: 0.000001 kWh
+  Carbon emissions: 4.107350e-07 kg CO2
+  Emissions rate: 24.98 gCO2eq/kWh
+  Region: samut sakhon
+  Country: Thailand
+
+Code Metrics:
+  COSMIC Function Points: 43 CFP
+  Total lines of code: 345 LOC
+
+Code Smell & Carbon Emission Analysis
+
+   Current Run (Initial):
+      Carbon Emission: 4.107350e-07 kg CO2
+
+   Code Smells Detected:
+      DeadCode: 3 issue(s)
+      DuplicatedCode: 2 issue(s)
+      GodClass: 1 issue(s)
+      LongMethod: 1 issue(s)
+      MutableDefaultArguments: 2 issue(s)
+      No previous run to compare
+================================================================================
+
+Analysis complete.
+\end{lstlisting}
+\endgroup
+
+จากการเปรียบเทียบพบว่า Webview สามารถนำค่าจากผลลัพธ์ของไลบรารีมาแสดงในรูปแบบที่อ่านง่ายขึ้น โดยยังคงสาระสำคัญของข้อมูลเดิมไว้ครบถ้วน เช่น จำนวนปัญหา ประเภทของปัญหา เลขบรรทัดที่ตรวจพบ ค่า CFP ค่า LOC ค่าพลังงานที่ใช้ และค่าคาร์บอนที่ปล่อยออกมา การแสดงผลดังกล่าวช่วยเพิ่มความน่าเชื่อถือของ Extension เนื่องจากผู้ใช้สามารถตรวจสอบทั้งค่ามาตรวัดและรายละเอียดของ issue ที่ปรากฏบนหน้ารายงานกับผลลัพธ์จาก Terminal ได้โดยตรง ทั้งนี้ การเปรียบเทียบในส่วนนี้มุ่งยืนยันความสอดคล้องของการส่งต่อและแสดงผลข้อมูล ไม่ใช่การพิสูจน์ความแม่นยำของการวัดคาร์บอนโดยตรง
 
 \subsection{การประเมินจากการใช้งานจริงของผู้ใช้}
 
